@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SimpleNoteApp</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'home', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'home', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'common', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'common', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+  
+    <div class="container-fluid">
+      <%= yield %>
+    </div>
+  </body>
+</html>

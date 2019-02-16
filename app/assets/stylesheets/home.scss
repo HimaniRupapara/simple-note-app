@@ -1,0 +1,31 @@
+// Place all the styles related to the Home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.home_background_color {
+  background-color: #325D95;
+}
+.home_header_font{
+  color: white;
+  font-size: smaller;
+
+}
+
+.home_body_font{
+  color: #333333;
+
+}
+
+.home_btn_header_color
+{
+  background-color: #285A95;
+}
+
+.sign_up_btn
+{
+  background-color: #285A95;
+  color: white;
+  padding:10px;
+  width: -webkit-fill-available;
+
+}

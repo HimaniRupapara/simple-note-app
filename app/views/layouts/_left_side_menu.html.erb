@@ -1,0 +1,13 @@
+<div class="sidebar-header">
+  <h4>SimpleNoteApp</h4>
+</div>
+
+
+
+  <% User.find(current_user.id).notes.each do |post| %>
+
+      <div class="success">
+  <p><strong><%= link_to post.title ,note_comments_path(:note_id => post.id) %></strong> Some text...</p>
+</div>
+
+  <% end %>

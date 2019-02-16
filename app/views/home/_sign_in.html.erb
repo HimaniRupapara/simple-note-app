@@ -1,0 +1,26 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name))do |f| %>
+
+<div class="row">
+  <div class="col-sm-3">
+    Email
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="col-sm-3">
+    Password
+    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= render "users/shared/links_for_login" %>
+  </div>
+  <div class="col-sm-3">
+    <br>
+    <div class="actions">
+      <%= f.submit "Log in", class: "home_btn_header_color home_header_font" %>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <br>
+    <div>
+      <%= link_to 'LogOut',destroy_user_session_path , method: :delete %>
+    </div>
+  </div>
+<% end %>

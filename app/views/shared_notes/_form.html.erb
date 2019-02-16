@@ -1,0 +1,32 @@
+<%= form_with(model: shared_note, local: true) do |form| %>
+  <% if shared_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(shared_note.errors.count, "error") %> prohibited this shared_note from being saved:</h2>
+
+      <ul>
+      <% shared_note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :note_id %>
+    <%= form.text_field :note_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :permission_id %>
+    <%= form.text_field :permission_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

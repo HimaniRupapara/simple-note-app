@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   layout "home"
+
   private
   def another_by_method
     if current_user.nil?
@@ -14,18 +15,13 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+
   def after_sign_in_path_for(resource)
     if current_user
-      load_sidebar
-      notes_path
+      home_dashboard_path
+      # note_comments_path(:note_id => User.find(current_user.id).notes.first.id)
     else
       root_path
     end
   end
-
-
-  def load_sidebar
-    @notes = current_user.notes.all
-  end
-
 end

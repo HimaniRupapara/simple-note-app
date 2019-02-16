@@ -33,14 +33,18 @@
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Details</a>
-                <a class="dropdown-item"><%= link_to 'LogOut',destroy_user_session_path, method: :delete  %></a>
+                <a class="dropdown-item"><%= link_to 'LogOut',destroy_user_session_path, method: :delete %></a>
               </div>
             </li>
           </ul>
         </nav>
-        <div style="padding:10px;">  <%= yield %></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12">
+              <%= yield %></div>
+          </div>
+        </div>
       </div>
-
 
     </div>
 

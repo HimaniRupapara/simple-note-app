@@ -18,8 +18,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if current_user
-      home_dashboard_path
-      # note_comments_path(:note_id => User.find(current_user.id).notes.first.id)
+      # home_dashboard_path
+      note_comments_path(:note_id => User.find(current_user.id).notes.first.id)
     else
       root_path
     end

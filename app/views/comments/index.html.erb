@@ -1,3 +1,8 @@
-<div class="row" id="comment_container">
-  <%= render @comments %>
+<div id="comment_container">
+  <%= render "comments/comment" %>
 </div>
+<script>
+  $(function () {
+    $('.pagination a').attr('data-remote', 'true')
+  });
+</script>

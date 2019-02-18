@@ -1,5 +1,6 @@
 module ApplicationHelper
 
+
   # To make devise forms available anywhere.
   def resource_name
     :user

@@ -1,1 +1,17 @@
-<%= comment.body %></br>
+<%= link_to 'Add Comment',new_note_comment_path(:note_id => @comments.first.note_id)  %>
+<% @comments.each do |comment| %>
+  <div class="card user_font_style" style="margin-top: 10px;">
+    <div class="card-body">
+      <h6 class="card-title"><%= comment.body %></h6>
+      <p class="card-text"><%= User.find(comment.commented_by_id).email %></p>
+    </div>
+  </div>
+<% end %>
+<div align="center">
+  <div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @comments %>
+    </div>
+    <%= will_paginate @comments ,style: "display:contents;" %>
+  </div>
+</div>

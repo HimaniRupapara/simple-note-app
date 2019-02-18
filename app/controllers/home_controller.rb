@@ -1,7 +1,8 @@
 class HomeController < ApplicationController
-layout 'user'
+layout 'home'
   def home
   end
   def dashboard
+    render :layout => 'user'
   end
 end

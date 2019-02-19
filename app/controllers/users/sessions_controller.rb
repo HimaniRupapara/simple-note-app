@@ -14,10 +14,24 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    resource = User.find_for_database_authentication(email: params[:user][:email])
+    return invalid_login_attempt unless resource
+    if resource.valid_password?(params[:user][:password])
+      sign_in :user, resource
+      # respond_to do |format|
+      #   format.html
+      #   format.js
+      redirect_to home_dashboard_path 
+      # note_comments_path(:note_id => User.find(current_user.id).notes.first.id), turbolinks: false}
+      # end
+    end
+  end
 
+  def invalid_login_attempt
+    set_flash_message(:alert, :invalid)
+    render json: flash[:alert], status: 401
+  end
   # DELETE /resource/sign_out
   # def destroy
   #   super

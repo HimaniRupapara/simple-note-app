@@ -4,5 +4,8 @@ layout 'home'
   end
   def dashboard
     render :layout => 'user'
+
+    
+
   end
 end

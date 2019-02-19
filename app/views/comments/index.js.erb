@@ -1,3 +1,3 @@
-$("#comment_container").empty();
-$("#comment_container").append('<%= j render :partial => 'comments/comment' %>');
+$('#dataUser').empty();
+$('#dataUser').append("<%= j (render partial: 'index') %>")
 $('.pagination a').attr('data-remote', 'true');

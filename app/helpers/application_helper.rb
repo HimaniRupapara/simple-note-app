@@ -14,7 +14,5 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
-  def notes_count
-  @notes ||= current_user.notes.count
- end
+  
 end

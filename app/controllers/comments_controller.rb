@@ -5,11 +5,10 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @note=Note.find(params[:note_id])
-    @comment = @note.comments.new
-    @comments = @note.comments
+    @user_note=Note.find(params[:note_id])
+    @comments = @user_note.comments
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { redirect_to note_comments_path }
       format.js
     end
   end
@@ -21,9 +20,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @note=Note.find(params[:note_id])
-    @comment = @note.comments.new
-
+    @user_note=Note.find(params[:note_id])
+    @comment = @user_note.comments.new
     respond_to do |format|
       format.html # index.html.erb
       format.js
@@ -37,15 +35,14 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-
-    @note=Note.find(params[:note_id])
-    @comment = @note.comments.new(comment_params)
+    @user_note=Note.find(params[:note_id])
+    @comment = @user_note.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
           format.html
           format.js
       else
-          format.html { render :new }
+          format.html { redirect_to ro, notice: 'Comment was successfully updated.' }
           format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -54,26 +51,26 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    respond_to do |format|
-      if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
-
-      else
-        format.html { render :edit }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
-    end
-
-  end
+    puts "aa"
+    @comment = Comment.find(params[:id])
+      if @comment.update_attributes!(comment_params)
+         respond_to do |f|
+         f.html
+         f.js
+       end
+     else
+       render 'edit'
+     end
+end
 
   # DELETE /comments/1
   # DELETE /comments/1.json
   def destroy
-    @comment.destroy
+    @comment = Comment.destroy(params[:id])
+
     respond_to do |format|
-      format.html { redirect_to notes_comments_url, notice: 'Comment was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html
+      format.js
     end
   end
 

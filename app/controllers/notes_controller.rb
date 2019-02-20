@@ -5,6 +5,7 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
+    @note = Note.new
     @notes = User.find(current_user.id).notes.order(:DESC)
   end
 
@@ -26,12 +27,12 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    @note = Note.new(note_params)
+    @note = User.find(current_user.id).notes.new(note_params)
 
     respond_to do |format|
       if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render :show, status: :created, location: @note }
+        format.html
+        format.js
       else
         format.html { render :new }
         format.json { render json: @note.errors, status: :unprocessable_entity }
@@ -71,6 +72,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :description, :active, :important)
+      params.require(:note).permit(:title, :description)
     end
 end

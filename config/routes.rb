@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         sessions: 'users/sessions'
       }
 
+
   root to: 'home#home'
   get '/home/dashboard' => 'home#dashboard'
 end

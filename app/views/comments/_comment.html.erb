@@ -1,5 +1,42 @@
-<div class="card user_font_style" style="margin-top: 10px;">
+<div id="temp" >
+</div>
+
+<div class="card " style="margin-top: 10px;">
   <div class="card-body">
-    <h6 class="card-title"><%= comment.body %></h6>
+    <div>
+    <h6 class="card-text "><%= comment.body %></h6>
+    <h6 class="card-text" style="color:#999999;font-size:10px;"><%= User.find(comment.commented_by_id).email %></h6>
+    </div>
+    <div style="float:right;">
+    <button type="button" class="btn btn-color" data-toggle="modal" data-target="#myupdateComment_<%= comment.id %>" id=<%= comment.id %>>Edit</button>
+    <%= link_to 'Delete',note_comment_path(:id => comment.id),method: :delete,class: "btn",style: "background-color:#8B0000;color:white" ,remote: true,data: {confirm: "Are you sure?"},id: comment.id %>
+    </div>
   </div>
 </div>
+
+<%= form_for(comment, url: note_comment_path(:id => comment.id), :method => :put,remote: true) do |f| %>
+<!-- Modal -->
+<div class="modal" id="myupdateComment_<%= comment.id %>">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Comment</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <p><%= f.text_field :body ,placeholder: " Body" ,class: "form-control "%></p>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag "Update" ,class: "btn btn-color",id: "updatecomment" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<% end %>

@@ -1,3 +1,4 @@
 $('#newCommentModal').modal('hide');
 $("#comment_container").append('<%= j render(@comment) %>');
 $('.pagination a').attr('data-remote', 'true');
+$(".comment_body").val('');

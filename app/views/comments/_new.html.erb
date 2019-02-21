@@ -1,9 +1,9 @@
 <div style="float: right;margin-top: 5px;">
-  <button type="button" class="btn btn-sm btn-color" data-toggle="modal" data-target="#newNoteModal">Add Note</button>
   <button type="button" class="btn btn-sm btn-color" data-toggle="modal" data-target="#newCommentModal">Add Comment</button>
 </div>
 </br>
 </br>
+
 <%= form_with(model: [ @user_note, @user_note.comments.build ], remote: true) do |f| %>
 <!-- Modal -->
 <div class="modal" id="newCommentModal">
@@ -26,36 +26,6 @@
     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
     <%= submit_tag "Add" ,class: "btn btn-color",id: "addcomment"%>
   </div>
-</div>
-
-</div>
-</div>
-<% end %>
-
-<%= form_with(model: [ @note ], local: true) do |form| %><!-- Modal -->
-<div class="modal" id="newNoteModal">
-<div class="modal-dialog">
-
-<!-- Modal content-->
-<div class="modal-content">
-<div class="modal-header">
-  <h4 class="modal-title">Add Note</h4>
-  <button type="button" class="close" data-dismiss="modal">&times;</button>
-</div>
-<div class="modal-body">
-  <div class="field">
-    <p><%= f.text_field :title ,placeholder: " Title" ,class: "form-control note_title"%></p>
-  </div>
-  <div class="field">
-    <p>
-      <%= f.text_area :description, placeholder: " Description" ,class: "form-control note_description",cols:50,rows:5%></p>
-  </div>
-
-</div>
-<div class="modal-footer">
-  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-  <%= submit_tag "Add" ,class: "btn btn-color",id: "addnote"%>
-</div>
 </div>
 
 </div>

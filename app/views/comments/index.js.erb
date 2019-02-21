@@ -1,4 +1,7 @@
 $('#comment_container').empty();
 $("#comment_container").append('<%= j render(@comments) %>');
-$('#temp').html('<%= j render(:partial => "temp") %>');
+$('#new').html('<%= j render(:partial => "new") %>');
+
+$('#paginationClass').empty();
+$('#comment_container').after('<%= j render(:partial => "pagination") %>');
 $('.pagination a').attr('data-remote', 'true');

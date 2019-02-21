@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :get_note_comments, only: [:index,:new,:create,:update,:destroy]
   layout 'user'
 
   # GET /comments
   # GET /comments.json
   def index
-    @user_note=Note.find(params[:note_id])
-    @comments = @user_note.comments
     respond_to do |format|
       format.html { redirect_to note_comments_path }
       format.js
@@ -20,7 +19,6 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-    @user_note=Note.find(params[:note_id])
     @comment = @user_note.comments.new
     respond_to do |format|
       format.html # index.html.erb
@@ -35,7 +33,6 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @user_note=Note.find(params[:note_id])
     @comment = @user_note.comments.new(comment_params)
     respond_to do |format|
       if @comment.save
@@ -51,8 +48,6 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-    puts "aa"
-    @comment = Comment.find(params[:id])
       if @comment.update_attributes!(comment_params)
          respond_to do |f|
          f.html
@@ -75,6 +70,11 @@ end
   end
 
   private
+
+    def get_note_comments
+      @user_note=Note.find(params[:note_id])
+      @comments = @user_note.comments.paginate(:page => params[:page], :per_page => 10)
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])

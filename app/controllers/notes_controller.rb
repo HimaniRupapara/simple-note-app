@@ -5,8 +5,8 @@ class NotesController < ApplicationController
   # GET /notes
   # GET /notes.json
   def index
-    @note = Note.new
-    @notes = User.find(current_user.id).notes.order(:DESC)
+    @note = User.find(current_user.id).notes.new
+    @notes = User.find(current_user.id).notes.order('notes.created_at desc')
   end
 
   # GET /notes/1
@@ -16,7 +16,7 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = Note.new
+    @note = User.find(current_user.id).notes.new
     @notes = Note.all
   end
 
@@ -27,6 +27,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
+    puts "params"
     @note = User.find(current_user.id).notes.new(note_params)
 
     respond_to do |format|
@@ -57,10 +58,11 @@ class NotesController < ApplicationController
   # DELETE /notes/1
   # DELETE /notes/1.json
   def destroy
-    @note.destroy
+    @note.active=false
+    @note.save
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'Note was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html
+      format.js
     end
   end
 
@@ -72,6 +74,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :description)
+      params.permit(:title, :description)
     end
 end

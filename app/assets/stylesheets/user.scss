@@ -107,21 +107,40 @@ ul ul a {
 }
 
 .success {
-  margin: 10px 0 10px 0px;
+  margin: 10px 0;
   padding: 10px;
   border-bottom: 1px solid gray;
   border-left: 6px solid #1E5F91;
 }
 
-
-.user_font_style{
+.user_font_style {
   color: black;
   font-size: x-small;
+}
+
+.btn-color {
+  background-color: #00618E;
+  color: #FFFFFF;
+}
+
+.scrollbar {
+  min-width: 250px;
+  max-width: 250px;
+  overflow-y: scroll;
+  position: relative;
+  height: 600px;
+}
+
+.cardSelect {
+  
 
 }
 
-.btn-color
+
+.div_click
 {
-  background-color: #00618E;
-    color: #FFFFFF;
+  &:onclick {
+    color: #fff;
+    background-color: #000;
+  }
 }

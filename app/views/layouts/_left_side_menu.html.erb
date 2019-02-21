@@ -1,10 +1,24 @@
-<div class="sidebar-header">
-  <h4>SimpleNoteApp</h4>
-</div>
-<% User.find(current_user.id).notes.each do |note| %>
-  <div class="success">
-    <p>
-      <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true %></strong>
-      Some text...</p>
+<div id="note_container">
+  <div class="sidebar-header ">
+    <h4>SimpleNoteApp</h4>
   </div>
-<% end %>
+
+  <div class="scrollbar">
+    <% User.find(current_user.id).notes.where('active=true').order('notes.created_at desc').each do |note| %>
+      <div class="success activeClass">
+        <div>
+          <p>
+            <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true %></strong>
+          <%= link_to 'Delete',note_path(:id => note.id),method: :delete,class: "btn",style: "float:right" ,remote: true,data: {confirm: "Are you sure?"},id: note.id %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<!-- <script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+  });
+
+</script> -->

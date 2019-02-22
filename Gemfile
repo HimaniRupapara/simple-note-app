@@ -17,7 +17,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
 
-gem "font-awesome-rails"
+gem 'font-awesome-sass'
 
 gem 'bootstrap', '~> 4.0.0.alpha3'
 

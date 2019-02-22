@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       resources :notes do
         resources :comments
       end
-    
+
 
 
   devise_for :users, controllers: {
@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
 
   root to: 'home#home'
-  get '/home/dashboard' => 'home#dashboard'
+  get '/home/dashboard' => 'notes#index'
+  get '/note/search' => 'notes#searchNote'
 end

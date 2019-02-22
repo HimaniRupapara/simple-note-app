@@ -1,0 +1,4 @@
+$('#myupdateNote_<%= @note.id %>').modal('hide');
+$('#<%= @note.id %>').parent().parent().parent().closest('div').remove();
+$("#note_container").empty();
+$("#note_container").append('<%= j render(:partial => "layouts/left_side_menu") %>');

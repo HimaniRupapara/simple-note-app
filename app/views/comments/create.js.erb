@@ -1,6 +1,6 @@
-$('#newCommentModal').modal('hide');
-$("#comment_container").append('<%= j render(@comment) %>');
-$('#paginationClass').empty();
 $('#comment_container').after('<%= j render(:partial => "pagination") %>');
+$('#newCommentModal').modal('hide');
+$("#comment_container").prepend('<%= j render(@comment) %>');
+$('#paginationClass').empty();
 $('.pagination a').attr('data-remote', 'true');
 $(".comment_body").val('');

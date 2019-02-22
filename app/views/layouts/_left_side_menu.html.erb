@@ -4,21 +4,31 @@
   </div>
 
   <div class="scrollbar">
-    <% User.find(current_user.id).notes.where('active=true').order('notes.created_at desc').each do |note| %>
-      <div class="success activeClass">
+    <% if @notes.count>0 %>
+      <% @notes.each do |note| %>
         <div>
-          <p>
-            <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true %></strong>
-          <%= link_to 'Delete',note_path(:id => note.id),method: :delete,class: "btn",style: "float:right" ,remote: true,data: {confirm: "Are you sure?"},id: note.id %>
-          </p>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true ,:id =>note.id ,:class => "himani" %></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;"><%= note.description %></div>
+
+            </div>
+            <div style="float:right">
+              <button type="button" style="display:contents" data-toggle="modal" data-target="#myupdateNote_<%= note.id %>" id=<%= note.id %>>
+                <%= icon('fa', 'edit', class: 'editClass') %></button>
+              <%= link_to note_path(:id => note.id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: note.id do %>
+              <%= icon('fa', 'trash', class: 'deleteClass') %>
+            <% end %>
+          </div>
         </div>
       </div>
+      <%= render 'notes/form', note: note %>
     <% end %>
-  </div>
+  <% else %>
+    <div style="margin:10px;">No record found
+    </div>
+  <% end %>
 </div>
-
-<!-- <script type="text/javascript">
-  document.addEventListener("DOMContentLoaded", function () {
-  });
-
-</script> -->
+</div>

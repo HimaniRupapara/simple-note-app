@@ -10,7 +10,7 @@ p {
   font-size: 1.1em;
   font-weight: 300;
   line-height: 1.7em;
-  color: #999;
+  // color: #999;
 }
 
 a,
@@ -131,16 +131,25 @@ ul ul a {
   height: 600px;
 }
 
-.cardSelect {
-  
-
+.bordered{
+  background-color: #285F91;
+  color:#FFFFFF;
 }
 
-
-.div_click
+.deleteClass
 {
-  &:onclick {
-    color: #fff;
-    background-color: #000;
-  }
+  color: #8B0000;
+  font-size: 15px;
+}
+.editClass
+{
+  color: #006400;
+}
+.search { position: relative; }
+.search input { text-indent: 30px;}
+.search .fa-search {
+  position: absolute;
+  top: 10px;
+  left: 7px;
+  font-size: 15px;
 }

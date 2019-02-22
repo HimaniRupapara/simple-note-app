@@ -1,37 +1,30 @@
-<%= form_with(model: note, local: true) do |form| %>
-  <% if note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(note.errors.count, "error") %> prohibited this note from being saved:</h2>
+<%= form_for(note , remote: true ) do |f| %>
 
-      <ul>
-      <% note.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<!-- Modal -->
+<div class="modal" id="myupdateNote_<%= note.id %>">
+<div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Edit Note</h4>
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
     </div>
-  <% end %>
+    <div class="modal-body">
+      <div class="field">
+        <p><%= f.text_field :title ,placeholder: " Title" ,class: "form-control "%></p>
+      </div>
+      <div class="field">
+        <p><%= f.text_field :description ,placeholder: " Description" ,class: "form-control "%></p>
+      </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= submit_tag "Update" ,class: "btn btn-color",id: "updateNote" %>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :active %>
-    <%= form.check_box :active %>
-  </div>
-
-  <div class="field">
-    <%= form.label :important %>
-    <%= form.check_box :important %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>

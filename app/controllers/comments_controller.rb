@@ -73,7 +73,7 @@ end
 
     def get_note_comments
       @user_note=Note.find(params[:note_id])
-      @comments = @user_note.comments.paginate(:page => params[:page], :per_page => 10)
+      @comments = @user_note.comments.order('comments.created_at desc').paginate(:page => params[:page], :per_page => 5)
     end
     # Use callbacks to share common setup or constraints between actions.
     def set_comment

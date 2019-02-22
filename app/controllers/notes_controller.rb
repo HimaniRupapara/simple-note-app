@@ -1,12 +1,14 @@
 class NotesController < ApplicationController
-  layout 'user'
+
   before_action :set_note, only: [:show, :edit, :update, :destroy]
+  before_action :get_user_note, only: [:index,:new,:create,:update,:destroy,:searchNote]
+  layout 'user'
+
 
   # GET /notes
   # GET /notes.json
   def index
-    @note = User.find(current_user.id).notes.new
-    @notes = User.find(current_user.id).notes.order('notes.created_at desc')
+    @note=@user.notes.new
   end
 
   # GET /notes/1
@@ -16,8 +18,11 @@ class NotesController < ApplicationController
 
   # GET /notes/new
   def new
-    @note = User.find(current_user.id).notes.new
-    @notes = Note.all
+    @note=@user.notes.new
+    respond_to do |format|
+      format.html # index.html.erb
+      format.js
+    end
   end
 
   # GET /notes/1/edit
@@ -27,9 +32,7 @@ class NotesController < ApplicationController
   # POST /notes
   # POST /notes.json
   def create
-    puts "params"
-    @note = User.find(current_user.id).notes.new(note_params)
-
+    @note = @user.notes.new(note_params)
     respond_to do |format|
       if @note.save
         format.html
@@ -45,9 +48,9 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @note }
+      if @note.update_attributes!(note_params)
+        format.html
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @note.errors, status: :unprocessable_entity }
@@ -66,7 +69,18 @@ class NotesController < ApplicationController
     end
   end
 
+
+  def searchNote
+    @notes=@notes.where("Lower(title) LIKE Lower(:search) OR Lower(description) LIKE (:search)",search: "%#{params[:search]}%")
+  end
+
   private
+
+    def get_user_note
+      @user=User.find(current_user.id)
+      @notes = @user.notes.where('active=true').order('notes.created_at desc')
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_note
       @note = Note.find(params[:id])
@@ -74,6 +88,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.permit(:title, :description)
+      params.require(:note).permit(:title, :description)
     end
 end

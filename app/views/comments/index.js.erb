@@ -1,7 +1,8 @@
+
 $('#comment_container').empty();
 $("#comment_container").append('<%= j render(@comments) %>');
 $('#new').html('<%= j render(:partial => "new") %>');
-
 $('#paginationClass').empty();
 $('#comment_container').after('<%= j render(:partial => "pagination") %>');
 $('.pagination a').attr('data-remote', 'true');
+alert($(this).find($(".himani")).('id'));

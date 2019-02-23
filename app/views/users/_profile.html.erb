@@ -1,0 +1,27 @@
+<div class="modal" id="user_profile">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">User Profile</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+
+        <h6>
+          <p>Email :
+            <b><%= current_user.email %></b>
+          </p>
+        </h6>
+        <h6>
+          <p>You join us at :
+            <b><%= current_user.created_at.to_s(:long) %></b>
+          </p>
+        </h6>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -7,32 +7,33 @@ class Users::SessionsController < Devise::SessionsController
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
-    flash[:errors] = "login failed!"
-    # yield resource if block_given?
-    # respond_with(root_path, serialize_options(resource))
     redirect_to root_path
+    set_flash_message(:error, :invalid)
   end
 
   # POST /resource/sign_in
   def create
-    resource = User.find_for_database_authentication(email: params[:user][:email])
-    return invalid_login_attempt unless resource
+  resource = User.find_for_database_authentication(email: params[:user][:email])
+      return invalid_login_attempt unless resource
     if resource.valid_password?(params[:user][:password])
-      sign_in :user, resource
-      # respond_to do |format|
-      #   format.html
-      #   format.js
-      redirect_to home_dashboard_path 
-      # note_comments_path(:note_id => User.find(current_user.id).notes.first.id), turbolinks: false}
-      # end
+      if resource.confirmed?
+        sign_in :user, resource
+        redirect_to home_dashboard_path
+      else
+        redirect_to root_path
+        set_flash_message(:error, :unconfirmed)
+      end
+    else
+      redirect_to root_path
+      set_flash_message(:error, :invalid)
     end
   end
 
   def invalid_login_attempt
-    set_flash_message(:alert, :invalid)
-    render json: flash[:alert], status: 401
+    redirect_to root_path
+    set_flash_message(:error, :invalid)
   end
-  # DELETE /resource/sign_out
+    # DELETE /resource/sign_out
   # def destroy
   #   super
   # end

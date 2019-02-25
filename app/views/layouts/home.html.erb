@@ -15,6 +15,19 @@
   <body>
     <div id="homeLayout">
       <div class="container-fluid">
+
+        <% flash.each do |key, value| %>
+          <% if key=='notice' %>
+            <div class="alert alert-success" role="alert">
+              <div class="header"><%= value %></div>
+            </div>
+          <% end %>
+          <% if key=='error' %>
+            <div class="alert alert-danger" role="alert">
+              <div class="header"><%= value %></div>
+            </div>
+          <% end %>
+        <% end %>
         <%= yield %>
       </div>
     </div>

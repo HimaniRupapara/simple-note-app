@@ -33,6 +33,8 @@ class NotesController < ApplicationController
   # POST /notes.json
   def create
     @note = @user.notes.new(note_params)
+    @note.tag_list_on(:tag_list)
+
     respond_to do |format|
       if @note.save
         format.html
@@ -70,15 +72,22 @@ class NotesController < ApplicationController
   end
 
 
-  def searchNote
-    @notes=@notes.where("Lower(title) LIKE Lower(:search) OR Lower(description) LIKE (:search)",search: "%#{params[:search]}%")
-  end
+    def searchNote
+      @notes_based_on_tags = @notes.tagged_with(params[:search])
+      if(@notes_based_on_tags.count == 0)
+        @notes_based_on_deatils=@notes.where("Lower(title) LIKE Lower(:search) OR Lower(description) LIKE (:search)",search: "%#{params[:search]}%")
+        @notes=@notes_based_on_deatils
+      else
+        @notes=@notes_based_on_tags
+      end
+    end
 
-  private
+    private
 
     def get_user_note
       @user=User.find(current_user.id)
       @notes = @user.notes.where('active=true').order('notes.created_at desc')
+
     end
 
     # Use callbacks to share common setup or constraints between actions.
@@ -88,6 +97,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :description)
+      params.require(:note).permit(:title, :description,:tag_list)
     end
 end

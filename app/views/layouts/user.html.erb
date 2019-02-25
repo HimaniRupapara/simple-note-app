@@ -9,11 +9,12 @@
     <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'pagination', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'search', 'data-turbolinks-track': 'reload' %>
-
+    <%= javascript_include_tag 'pagination', 'data-turbolinks-track': 'reload' %>
 
   </head>
 
   <body>
+
     <div id="userLayout">
       <div class="wrapper">
 
@@ -21,12 +22,10 @@
         <nav id="sidebar">
           <%= render 'layouts/left_side_menu' %>
         </nav>
-
         <!-- Page Content -->
-
         <div style="width: 100%;" id="content">
           <nav class="navbar navbar-expand-lg navbar-dark  header_background_color ">
-          <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav ml-auto">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -43,7 +42,7 @@
                 <div class="search">
                   <span>
                     <%= icon('fa', 'search', class: 'searchClass') %></span>
-                  <%= text_field_tag :search, params[:search] %>
+                  <%= text_field_tag :search, params[:search] ,placeholder: "search" %>
                 </div>
               <% end %>
             </div>
@@ -52,12 +51,12 @@
           </div>
           <br><br>
           <div class="row" style="float:right;">
-            <div class="col-sm-12">
-              <div id="new"></div>
+            <div class="col-sm-12" >
+
+              <div id="new" style="display:inline-flex;"></div>
             </div>
 
           </div>
-
           <br><br>
           <div class="row">
             <div class="col-sm-12">

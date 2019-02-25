@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :shared_notes, :foreign_key => "shared_by_id"
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
 
 end

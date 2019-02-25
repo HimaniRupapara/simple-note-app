@@ -1,12 +1,8 @@
 <div id="paginationClass">
-
-
-
-
-<div class="apple_pagination">
-  <div class="page_info">
-    <%= page_entries_info @comments %>
+  <div class="apple_pagination">
+    <div class="page_info">
+      <%= page_entries_info @comments %>
+    </div>
+    <%= will_paginate @comments ,style: "display:contents;" %>
   </div>
-  <%= will_paginate @comments ,style: "display:contents;" %>
-</div>
 </div>

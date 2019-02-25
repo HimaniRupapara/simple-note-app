@@ -1,5 +1,3 @@
-<%= stylesheet_link_tag 'pagination', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'pagination', 'data-turbolinks-track': 'reload' %>
 <div class="card " style="margin-top: 5px;">
   <div class="cardSelect" style="padding:10px;">
     <div style="display: inline-block;">
@@ -11,10 +9,8 @@
         <%= icon('fa', 'edit', class: 'editClass') %></button>
       <%= link_to note_comment_path(:id => comment.id),method: :delete,remote: true,data: {confirm: "Are you sure?"} do %>
       <%= icon('fa', 'trash', class: 'deleteClass') %>
-      <% end %>
-
+    <% end %>
   </div>
-
 </div>
 </div>
 

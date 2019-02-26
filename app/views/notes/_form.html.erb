@@ -12,14 +12,14 @@
     </div>
     <div class="modal-body">
       <div class="field">
-        <p><%= f.text_field :title ,placeholder: " Title" ,class: "form-control "%></p>
+        <p>  Title <%= f.text_field :title ,placeholder: " Title" ,class: "form-control "%></p>
       </div>
       <div class="field">
-        <p><%= f.text_field :description ,placeholder: " Description" ,class: "form-control "%></p>
+        <p>Description <%= f.text_field :description ,placeholder: " Description" ,class: "form-control "%></p>
       </div>
       <div class="field">
-        <p><%= f.text_field :tag_list ,:value => note.tag_list.map { |t| t }.join(', '), placeholder: " tags with comma seperated" ,class: "form-control "%></p>
-      </div>
+         <p>Tags with comma seperated <%= f.text_field :tag_list ,:value => note.tag_list.map { |t| t }.join(', '), placeholder: " tags with comma seperated" ,class: "form-control "%></p>
+       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         <%= submit_tag "Update" ,class: "btn btn-color",id: "updateNote" %>

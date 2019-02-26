@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :get_note_comments, only: [:index,:new,:update,:destroy]
+  before_action :get_note_comments, only: [:index,:new,:create,:update,:destroy]
   layout 'user'
 
   # GET /comments
@@ -33,12 +33,14 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @user_note=Note.find(params[:note_id])
     @comment = @user_note.comments.new(comment_params)
-      respond_to do |format|
-        if @comment.save
-        format.html
-        format.js
+    respond_to do |format|
+      if @comment.save
+          format.html
+          format.js
+      else
+          format.html { redirect_to ro, notice: 'Comment was successfully updated.' }
+          format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
   end

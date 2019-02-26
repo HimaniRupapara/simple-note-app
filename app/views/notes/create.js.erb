@@ -1,5 +1,7 @@
 $('#newNoteModal').modal('hide');
+$("#error_messages").empty();
 $("#note_container").empty();
 $("#note_container").append('<%= j render(:partial => "layouts/left_side_menu") %>');
 $(".note_title").val('');
 $(".note_description").val('');
+$(".note_tag_list").val('');

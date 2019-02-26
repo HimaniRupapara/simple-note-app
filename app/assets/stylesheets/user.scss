@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+// @import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -145,6 +145,12 @@ ul ul a {
 {
   color: #006400;
 }
+
+.starClass
+{
+  color: slategray;
+}
+
 .search { position: relative; }
 .search input { text-indent: 30px;}
 .search .fa-search {
@@ -152,8 +158,4 @@ ul ul a {
   top: 10px;
   left: 7px;
   font-size: 15px;
-}
-
-.aa{
-  color:white;
 }

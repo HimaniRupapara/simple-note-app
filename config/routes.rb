@@ -10,5 +10,6 @@ Rails.application.routes.draw do
 
   root to: 'home#home'
   get '/home/dashboard' => 'notes#index'
+  get '/note/mark_as_important/:id' => 'notes#mark_as_important', as: :mark_as_important
   get '/note/search' => 'notes#searchNote'
 end

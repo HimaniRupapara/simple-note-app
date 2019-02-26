@@ -1,7 +1,7 @@
 class NotesController < ApplicationController
 
-  before_action :set_note, only: [:show, :edit, :update, :destroy]
-  before_action :get_user_note, only: [:index,:new,:create,:update,:destroy,:searchNote]
+  before_action :set_note, only: [:show, :edit, :update, :destroy,:mark_as_important]
+  before_action :get_user_note
   layout 'user'
 
 
@@ -40,8 +40,8 @@ class NotesController < ApplicationController
         format.html
         format.js
       else
-        format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+
+        format.js {render '_error_messages'}
       end
     end
   end
@@ -82,8 +82,20 @@ class NotesController < ApplicationController
       end
     end
 
-    private
+    def mark_as_important
+      if @note.important==true
+        @note.important=false
+      else
+        @note.important=true
+      end
+      @note.save
+      respond_to do |format|
+        format.html
+        format.js
+      end
+    end
 
+    private
     def get_user_note
       @user=User.find(current_user.id)
       @notes = @user.notes.where('active=true').order('notes.created_at desc')
@@ -97,6 +109,6 @@ class NotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def note_params
-      params.require(:note).permit(:title, :description,:tag_list)
+      params.require(:note).permit(:title, :description,:tag_list,:important)
     end
 end

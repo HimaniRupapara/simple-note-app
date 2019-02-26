@@ -19,6 +19,9 @@
             <b><%= current_user.created_at.to_s(:long) %></b>
           </p>
         </h6>
+
+<%=  link_to 'Update_profile' ,edit_user_registration_path ,remote: true %>
+
         <div class="modal-footer"></div>
       </div>
     </div>

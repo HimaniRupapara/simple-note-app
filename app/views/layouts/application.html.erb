@@ -11,6 +11,7 @@
 
   <body>
     <%= render 'left_side_menu'%>
-    <%= yield %>
-  </body>
+    <%= text_area_tag :body, id: "tinymce", class: "tinymce", rows: 40, cols: 120 %>
+          </body>
 </html>
+<%= tinymce %>

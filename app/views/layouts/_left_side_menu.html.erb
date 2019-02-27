@@ -12,34 +12,35 @@
               <p>
                 <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true ,:id =>note.id %></strong>
               </p>
-              <div style="color:#999999;font-size:10px;"><%= note.description %></div>
+              <div style="color:#999999;font-size:10px;"><%= (CGI::unescapeHTML note.description).html_safe %></div>
             </div>
             <div style="float:right">
-              <button type="button" style="display:contents" data-toggle="modal" data-target="#myupdateNote_<%= note.id %>" id=<%= note.id %>>
-                <%= icon('fa', 'edit', class: 'editClass') %></button>
-              <%= link_to note_path(:id => note.id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: note.id do %>
-              <%= icon('fa', 'trash', class: 'deleteClass') %>
+              <%= link_to edit_note_path(:id => note.id),remote: true,id: note.id do %>
+              <%= icon('fa', 'edit', class: 'editClass') %>
             <% end %>
-            <% if note.important == true %>
+
+            <%= link_to note_path(:id => note.id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: note.id do %>
+            <%= icon('fa', 'trash', class: 'deleteClass') %>
+          <% end %>
+          <% if note.important == true %>
 
             <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
             <%= icon('fa', 'thumbtack', class: 'starClass') %>
-            <% end %>
-
-
-            <% else %>
-              <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
-              <%= icon('far', 'star', class: 'starClass') %>
-            <% end %>
           <% end %>
-        </div>
-      </div>
+        <% else %>
+          <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+          <%= icon('far', 'star', class: 'starClass') %>
+        <% end %>
+      <% end %>
     </div>
-    <%= render 'notes/form', note: note %>
-  <% end %>
-<% else %>
-  <div style="margin:10px;">No record found
   </div>
+</div>
+<% end %>
+<% else %>
+<div style="margin:10px;">No record found
+</div>
 <% end %>
 </div>
 </div>
+
+<div id="updateModalDiv"></div>

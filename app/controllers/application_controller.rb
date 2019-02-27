@@ -1,5 +1,11 @@
 class ApplicationController < ActionController::Base
   layout "home"
+  before_action :configure_permitted_parameters, if: :devise_controller?
+
+  protected
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: [:profile])
+  end
 
   private
   def another_by_method

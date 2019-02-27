@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)http://localhost:3000/home/dashboard -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>SimpleNoteApp</title>
+    <meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="3NRdx9ke2aDellbjCtM+qbwvMYieyQHcZqmJ608Ji/EJ5shrLv/PWgJn9cFBcbPqrJgdOz61nL+riu1g6MFeXw==">
+    
+    <link rel="stylesheet" media="all" href="./SimpleNoteApp_files/common.self-37f1b98525df1fedf3d528c23a884c9214ce1d5e1cbdfcacd50c37dc4df924d7.css" data-turbolinks-track="reload">
+    <script src="./SimpleNoteApp_files/rails-ujs.self-d109d8c5c0194c8ad60b8838b2661c5596b5c955987f7cd4045eb2fb90ca5343.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/jquery.self-bd7ddd393353a8d2480a622e80342adf488fb6006d667e8b42e4c0073393abee.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/jquery_ujs.self-784a997f6726036b1993eb2217c9cb558e1cbb801c6da88105588c56f13b466a.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/popper.self-70e1b2b78096eb80eb35ebac513e7a8007033ee3e881919cfdca4ece7779cffd.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/turbolinks.self-569ee74eaa15c1e2019317ff770b8769b1ec033a0f572a485f64c82ddc8f989e.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/rails.self-3613527f3026a4d681f74c6d9489c6835d4b28213c74bf168026b677aa801452.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/tinymce.self-4eb85ae840d63d57647a14ac33e507bbc8c63c8a3b332a84dddd1498a22202a5.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/tinymce.self-6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/util.self-e642b82a9b9558c2a8dfb34433f8c486df727b1093f3a3f7ad6ef5d51f87fea1.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/modal.self-b16cc407b110cb558be40dda7291e1bcb6763a187a086035e5d946002beb39c1.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/tooltip.self-7c4552a145e8b8969660afabae4c0405755cd1e2ec74fce3a48d413094ac2f98.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/popover.self-782b855e353ac984f70e8234e5c9ef99bde0be23c02785b01bc2aa6e19363341.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/tab.self-0ae04cb661eb201a1f9fa5dacfb406f0e8f6c54d6ced0897d7c638b38b5f3cad.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/collapse.self-dee184bdf9a9c56c18340eceb4985c847124e53f608b3f96c85abf59a59d4e6f.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/scrollspy.self-5e6559c5957d65ff19c4fbfe2cedf307b6ae736c9d7ee7ba4a9c99b46771697d.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/carousel.self-02a9b4ab5704ba8a11fe6e40e9086cee3d5914c2909a8a3e0e3f6e4d4954b8c9.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/dropdown.self-06243ed087bf45ef738745a758369fbe4ed9fbba77554d46ac49a4302101a7c0.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/button.self-4a2e9739820f6ad0f323e4408d205582892173ce5bd77755222af4f0d23361b4.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/alert.self-ff708db7950f1b1f1db2087879e35e0016aab9d91be27f314e5084c6639dec90.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/bootstrap-sprockets.self-636159b35205da4142a43bc02d2849d77d3ac07a0946211585cde15a9c6ff21f.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/activestorage.self-1ed4604ac2170045f1ffca4edb81a75246661555e4f9cf682bb8a21825e32e1c.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/action_cable.self-69fddfcddf4fdef9828648f9330d6ce108b93b82b0b8d3affffc59a114853451.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/cable.self-8484513823f404ed0c0f039f75243bfdede7af7919dda65f2e66391252443ce9.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/comments.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/common.self-79488488398f5f5aed236dd6e9f914599370d04dfe70fda61b8c83bf739b1088.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/home.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/notes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/pagination.self-01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/search.self-5ddbe284a633ad43afbb50c0ce65612ab7931f038a57acdf4318cb25c1f2b2ac.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/shared_notes.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/user.self-c1c5d837daa4cb1d47f6eaf8524dda8c52125fa37238f4e59b3ba7d0f8832d5c.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/application.self-12be097b9a2442b0b6cdcb5146d1d63c00abcde3675ff34d1de6126cb13e6714.js" data-turbolinks-track="reload"></script>
+    <link rel="stylesheet" media="all" href="./SimpleNoteApp_files/user.self-f5c1ef6aef5bfd17e4098a66ba8644cc21058432b284b4dcf8b1fef31e10a008.css" data-turbolinks-track="reload">
+    <link rel="stylesheet" media="all" href="./SimpleNoteApp_files/pagination.self-a4b8796e214a4709b19708078f6c253b18d38d465197686e417596567a2b9de6.css" data-turbolinks-track="reload">
+    <script src="./SimpleNoteApp_files/user.self-c1c5d837daa4cb1d47f6eaf8524dda8c52125fa37238f4e59b3ba7d0f8832d5c.js" data-turbolinks-track="reload"></script>
+    <script src="./SimpleNoteApp_files/search.self-5ddbe284a633ad43afbb50c0ce65612ab7931f038a57acdf4318cb25c1f2b2ac.js" data-turbolinks-track="reload"></script>
+    <script src="./SimpleNoteApp_files/pagination.self-01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b.js" data-turbolinks-track="reload"></script>
+  <link rel="stylesheet" type="text/css" id="u0" href="./SimpleNoteApp_files/skin.min.css"><link rel="stylesheet" type="text/css" id="u0" href="./SimpleNoteApp_files/skin.min.css"></head>
+
+  <body class="modal-open">
+    <div id="userLayout">
+      <div class="wrapper">
+
+        <!-- Sidebar -->
+        <nav id="sidebar">
+          <div id="note_container">
+  <div class="sidebar-header ">
+    <h4>SimpleNoteApp</h4>
+  </div>
+
+  <div class="scrollbar">
+        <div>
+          <div class="success activeClass bordered">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="68" data-remote="true" href="http://localhost:3000/notes/68/comments">dfdg</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;"><p>&lt;h1&gt;aaa&lt;/h1&gt;</p></div>
+            </div>
+            <div style="float:right">
+              <a id="68" data-remote="true" href="http://localhost:3000/notes/68/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="68" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/68">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/68">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="67" data-remote="true" href="http://localhost:3000/notes/67/comments">dfgdfg</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;"><p>&lt;h1&gt;dfgf&lt;/h1&gt;</p></div>
+            </div>
+            <div style="float:right">
+              <a id="67" data-remote="true" href="http://localhost:3000/notes/67/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="67" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/67">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/67">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="66" data-remote="true" href="http://localhost:3000/notes/66/comments">note22</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;"><p>Yup <strong>Note22</strong></p></div>
+            </div>
+            <div style="float:right">
+              <a id="66" data-remote="true" href="http://localhost:3000/notes/66/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="66" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/66">
+            <i class="fa fa-trash deleteClass"></i>
+</a>
+            <a data-remote="true" href="http://localhost:3000/note/mark_as_important/66">
+            <i class="fa fa-thumbtack starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="65" data-remote="true" href="http://localhost:3000/notes/65/comments">ghhjgh</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;"><p>&lt;h1&gt;gfdgdfgfdfdg&lt;/h1&gt;</p></div>
+            </div>
+            <div style="float:right">
+              <a id="65" data-remote="true" href="http://localhost:3000/notes/65/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="65" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/65">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/65">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="64" data-remote="true" href="http://localhost:3000/notes/64/comments">ghhjgh</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">qw</div>
+            </div>
+            <div style="float:right">
+              <a id="64" data-remote="true" href="http://localhost:3000/notes/64/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="64" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/64">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/64">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="63" data-remote="true" href="http://localhost:3000/notes/63/comments">sdasdadas</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">qw</div>
+            </div>
+            <div style="float:right">
+              <a id="63" data-remote="true" href="http://localhost:3000/notes/63/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="63" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/63">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/63">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="62" data-remote="true" href="http://localhost:3000/notes/62/comments">fghgf</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">d</div>
+            </div>
+            <div style="float:right">
+              <a id="62" data-remote="true" href="http://localhost:3000/notes/62/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="62" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/62">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/62">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="61" data-remote="true" href="http://localhost:3000/notes/61/comments">gh</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">qwsss</div>
+            </div>
+            <div style="float:right">
+              <a id="61" data-remote="true" href="http://localhost:3000/notes/61/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="61" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/61">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/61">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="60" data-remote="true" href="http://localhost:3000/notes/60/comments">note2</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">aqw</div>
+            </div>
+            <div style="float:right">
+              <a id="60" data-remote="true" href="http://localhost:3000/notes/60/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="60" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/60">
+            <i class="fa fa-trash deleteClass"></i>
+</a>
+            <a data-remote="true" href="http://localhost:3000/note/mark_as_important/60">
+            <i class="fa fa-thumbtack starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="59" data-remote="true" href="http://localhost:3000/notes/59/comments">fsdf</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">sfd</div>
+            </div>
+            <div style="float:right">
+              <a id="59" data-remote="true" href="http://localhost:3000/notes/59/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="59" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/59">
+            <i class="fa fa-trash deleteClass"></i>
+</a>
+            <a data-remote="true" href="http://localhost:3000/note/mark_as_important/59">
+            <i class="fa fa-thumbtack starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="49" data-remote="true" href="http://localhost:3000/notes/49/comments">note14</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">des14</div>
+            </div>
+            <div style="float:right">
+              <a id="49" data-remote="true" href="http://localhost:3000/notes/49/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="49" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/49">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/49">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="48" data-remote="true" href="http://localhost:3000/notes/48/comments">note13</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">d</div>
+            </div>
+            <div style="float:right">
+              <a id="48" data-remote="true" href="http://localhost:3000/notes/48/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="48" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/48">
+            <i class="fa fa-trash deleteClass"></i>
+</a>
+            <a data-remote="true" href="http://localhost:3000/note/mark_as_important/48">
+            <i class="fa fa-thumbtack starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="45" data-remote="true" href="http://localhost:3000/notes/45/comments">note10qqq</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">dsf</div>
+            </div>
+            <div style="float:right">
+              <a id="45" data-remote="true" href="http://localhost:3000/notes/45/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="45" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/45">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/45">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="44" data-remote="true" href="http://localhost:3000/notes/44/comments">note9</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">fd</div>
+            </div>
+            <div style="float:right">
+              <a id="44" data-remote="true" href="http://localhost:3000/notes/44/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="44" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/44">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/44">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="42" data-remote="true" href="http://localhost:3000/notes/42/comments">note7</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">desc</div>
+            </div>
+            <div style="float:right">
+              <a id="42" data-remote="true" href="http://localhost:3000/notes/42/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="42" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/42">
+            <i class="fa fa-trash deleteClass"></i>
+</a>
+            <a data-remote="true" href="http://localhost:3000/note/mark_as_important/42">
+            <i class="fa fa-thumbtack starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="41" data-remote="true" href="http://localhost:3000/notes/41/comments">note6</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">sd</div>
+            </div>
+            <div style="float:right">
+              <a id="41" data-remote="true" href="http://localhost:3000/notes/41/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="41" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/41">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/41">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="40" data-remote="true" href="http://localhost:3000/notes/40/comments">note5</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">des5</div>
+            </div>
+            <div style="float:right">
+              <a id="40" data-remote="true" href="http://localhost:3000/notes/40/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="40" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/40">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/40">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="39" data-remote="true" href="http://localhost:3000/notes/39/comments">note3</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">sa</div>
+            </div>
+            <div style="float:right">
+              <a id="39" data-remote="true" href="http://localhost:3000/notes/39/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="39" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/39">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/39">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="38" data-remote="true" href="http://localhost:3000/notes/38/comments">note2</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">des</div>
+            </div>
+            <div style="float:right">
+              <a id="38" data-remote="true" href="http://localhost:3000/notes/38/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="38" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/38">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/38">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+        <div>
+          <div class="success activeClass">
+            <div style="display: inline-block;line-height:0px">
+              <p>
+                <strong><a id="34" data-remote="true" href="http://localhost:3000/notes/34/comments">Note1</a></strong>
+              </p>
+              <div style="color:#999999;font-size:10px;">Description1</div>
+            </div>
+            <div style="float:right">
+              <a id="34" data-remote="true" href="http://localhost:3000/notes/34/edit">
+              <i class="fa fa-edit editClass"></i>
+</a>
+            <a data-confirm="Are you sure?" id="34" data-remote="true" rel="nofollow" data-method="delete" href="http://localhost:3000/notes/34">
+            <i class="fa fa-trash deleteClass"></i>
+</a>          <a data-remote="true" href="http://localhost:3000/note/mark_as_important/34">
+          <i class="far fa-star starClass"></i>
+</a>    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div id="updateModalDiv"></div><script src="./SimpleNoteApp_files/rails.self-3613527f3026a4d681f74c6d9489c6835d4b28213c74bf168026b677aa801452.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/preinit.self-84328a53e798df12f891eb49871773fd9f925439c8630e9e22423a82ef9e6f89.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/tinymce.self-4eb85ae840d63d57647a14ac33e507bbc8c63c8a3b332a84dddd1498a22202a5.js" data-turbolinks-track="reload"></script>
+<script src="./SimpleNoteApp_files/tinymce.self-6a3cf5192354f71615ac51034b3e97c20eda99643fcaf5bbe6d41ad59bd12167.js" data-turbolinks-track="reload"></script>
+<form class="edit_note" id="edit_note_68" action="http://localhost:3000/notes/68" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="_method" value="put">
+<!-- Modal -->
+<div class="modal show" id="myupdateNote" style="display: block; padding-left: 15px;">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Note</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="field">
+          <p>
+            Title
+            <input placeholder=" Title" class="form-control" type="text" value="dfdg" name="note[title]" id="note_title"></p>
+        </div>
+        <div class="field">
+          <p>
+            Description
+            <textarea class="tinymce" rows="10" cols="10" name="note[description]" id="note_description" style="display: none;" aria-hidden="true">&lt;p&gt;&amp;lt;h1&amp;gt;aaa&amp;lt;/h1&amp;gt;&lt;/p&gt;</textarea><div role="application" class="tox tox-tinymce" style="visibility: hidden; height: 296px;"><div class="tox-editor-container"><div role="menubar" data-alloy-tabstop="true" class="tox-menubar"><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">File</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">Edit</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">View</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">Format</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div role="group" class="tox-toolbar"><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button title="Formats" aria-label="Formats" aria-haspopup="true" type="button" unselectable="on" tabindex="-1" class="tox-tbtn tox-tbtn--select tox-tbtn--bespoke" aria-expanded="false" style="user-select: none;"><span class="tox-tbtn__select-label">Paragraph</span><div class="tox-tbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Bold" title="Bold" type="button" tabindex="-1" class="tox-tbtn" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M7.8 19c-.3 0-.5 0-.6-.2l-.2-.5V5.7c0-.2 0-.4.2-.5l.6-.2h5c1.5 0 2.7.3 3.5 1 .7.6 1.1 1.4 1.1 2.5a3 3 0 0 1-.6 1.9c-.4.6-1 1-1.6 1.2.4.1.9.3 1.3.6s.8.7 1 1.2c.4.4.5 1 .5 1.6 0 1.3-.4 2.3-1.3 3-.8.7-2.1 1-3.8 1H7.8zm5-8.3c.6 0 1.2-.1 1.6-.5.4-.3.6-.7.6-1.3 0-1.1-.8-1.7-2.3-1.7H9.3v3.5h3.4zm.5 6c.7 0 1.3-.1 1.7-.4.4-.4.6-.9.6-1.5s-.2-1-.7-1.4c-.4-.3-1-.4-2-.4H9.4v3.8h4z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Italic" title="Italic" type="button" tabindex="-1" class="tox-tbtn" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M16.7 4.7l-.1.9h-.3c-.6 0-1 0-1.4.3-.3.3-.4.6-.5 1.1l-2.1 9.8v.6c0 .5.4.8 1.4.8h.2l-.2.8H8l.2-.8h.2c1.1 0 1.8-.5 2-1.5l2-9.8.1-.5c0-.6-.4-.8-1.4-.8h-.3l.2-.9h5.8z" fill-rule="evenodd"></path></svg></span></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Undo" title="Undo" type="button" tabindex="-1" class="tox-tbtn"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M6.4 8H12c3.7 0 6.2 2 6.8 5.1.6 2.7-.4 5.6-2.3 6.8a1 1 0 0 1-1-1.8c1.1-.6 1.8-2.7 1.4-4.6-.5-2.1-2.1-3.5-4.9-3.5H6.4l3.3 3.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 1.4L6.4 8z" fill-rule="nonzero"></path></svg></span></button><button aria-label="Redo" title="Redo" type="button" tabindex="-1" class="tox-tbtn" disabled="disabled"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M17.6 10H12c-2.8 0-4.4 1.4-4.9 3.5-.4 2 .3 4 1.4 4.6a1 1 0 1 1-1 1.8c-2-1.2-2.9-4.1-2.3-6.8.6-3 3-5.1 6.8-5.1h5.6l-3.3-3.3a1 1 0 1 1 1.4-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3z" fill-rule="nonzero"></path></svg></span></button></div></div><div class="tox-anchorbar"></div><div class="tox-sidebar-wrap"><div class="tox-edit-area"><iframe id="note_description_ifr" frameborder="0" allowtransparency="true" title="Rich Text Area. Press ALT-0 for help." class="tox-edit-area__iframe" src="./SimpleNoteApp_files/saved_resource.html"></iframe></div><div role="complementary" class="tox-sidebar"><div data-alloy-tabstop="true" tabindex="-1" class="tox-sidebar__slider tox-sidebar--sliding-closed" style="width: 0px;"><div class="tox-sidebar__pane-container"></div></div></div></div></div><div class="tox-statusbar"><div class="tox-statusbar__text-container"><div role="navigation" data-alloy-tabstop="true" class="tox-statusbar__path"><div role="button" data-index="0" tab-index="-1" aria-level="1" tabindex="-1" class="tox-statusbar__path-item">p</div></div><span class="tox-statusbar__branding">Powered by <a href="https://www.tiny.cloud/?utm_campaign=editor_referral&amp;utm_medium=poweredby&amp;utm_source=tinymce&amp;utm_content=v5" rel="noopener" target="_blank" tabindex="-1" aria-label="Powered by Tiny">Tiny</a></span></div><div title="Resize" class="tox-statusbar__resize-handle"><svg width="10" height="10"><g fill-rule="nonzero"><path d="M8.1 1.1A.5.5 0 1 1 9 2l-7 7A.5.5 0 1 1 1 8l7-7zM8.1 5.1A.5.5 0 1 1 9 6l-3 3A.5.5 0 1 1 5 8l3-3z"></path></g></svg></div></div></div>
+          </p></div>
+          <div class="field">
+            <p>Tags with comma seperated
+              <input value="Movie" placeholder=" tags with comma seperated" class="form-control" type="text" name="note[tag_list]" id="note_tag_list"></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" name="commit" value="Update" class="btn btn-color" id="updateNote" data-disable-with="Update">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form><script>
+//<![CDATA[
+TinyMCERails.configuration.default = {
+  selector: "textarea.tinymce",
+  toolbar: ["styleselect | bold italic | undo redo","image | link"]
+};
+TinyMCERails.initialize('default', {
+  
+});
+//]]>
+</script>
+
+
+        </nav>
+        <!-- Page Content -->
+        <div style="width: 100%;" id="content">
+          <nav class="navbar navbar-expand-lg navbar-dark  header_background_color ">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="http://localhost:3000/home/dashboard#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" data-toggle="modal" data-target="#user_profile" style="cursor:pointer;">Details</a>
+                  <a class="dropdown-item"></a><a rel="nofollow" data-method="delete" href="http://localhost:3000/users/sign_out">LogOut</a>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="container">
+            <div class="row" style="float:right;margin-top:5px;margin-right:5px">
+              <div style="margin-right:10px;">
+                <form id="note_search" action="http://localhost:3000/note/search" accept-charset="UTF-8" data-remote="true" method="get"><input name="utf8" type="hidden" value="✓">
+                <div class="search">
+                  <span>
+                    <i class="fa fa-search searchClass"></i></span>
+                  <input type="text" name="search" id="search" placeholder="search">
+                </div>
+</form>            </div>
+            <button type="button" class="btn btn-sm btn-color" data-toggle="modal" data-target="#newNoteModal">Add Note</button>
+          </div>
+          <br><br>
+          <div class="row" style="float:right;">
+            <div class="col-sm-12">
+              <div id="new" style="display:inline-flex;"></div>
+            </div>
+          </div>
+          <br><br>
+          <div class="row">
+            <div class="col-sm-12">
+              <div id="comment_container">
+</div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <form action="http://localhost:3000/notes" accept-charset="UTF-8" data-remote="true" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="3NRdx9ke2aDellbjCtM+qbwvMYieyQHcZqmJ608Ji/EJ5shrLv/PWgJn9cFBcbPqrJgdOz61nL+riu1g6MFeXw==">
+<div class="modal" id="newNoteModal">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Add Note</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+        <div id="error_messages" style="background:#8B0000;color:white;padding-left:10px;"></div><br>
+        <div class="field">
+          <p><input placeholder=" Title" class="form-control note_title" type="text" name="note[title]" id="note_title"></p>
+        </div>
+
+        <div class="field">
+          <p>
+            <textarea class="tinymce form-control" rows="20" cols="20" name="note[description]" id="note_description" aria-hidden="true" style="display: none;"></textarea><div role="application" class="tox tox-tinymce" style="visibility: hidden; height: 200px; display: none;"><div class="tox-editor-container"><div role="menubar" data-alloy-tabstop="true" class="tox-menubar"><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">File</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">Edit</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">View</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">Format</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div role="group" class="tox-toolbar"><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button title="Formats" aria-label="Formats" aria-haspopup="true" type="button" unselectable="on" tabindex="-1" class="tox-tbtn tox-tbtn--select tox-tbtn--bespoke" aria-expanded="false" style="user-select: none;"><span class="tox-tbtn__select-label">Paragraph</span><div class="tox-tbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Bold" title="Bold" type="button" tabindex="-1" class="tox-tbtn" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M7.8 19c-.3 0-.5 0-.6-.2l-.2-.5V5.7c0-.2 0-.4.2-.5l.6-.2h5c1.5 0 2.7.3 3.5 1 .7.6 1.1 1.4 1.1 2.5a3 3 0 0 1-.6 1.9c-.4.6-1 1-1.6 1.2.4.1.9.3 1.3.6s.8.7 1 1.2c.4.4.5 1 .5 1.6 0 1.3-.4 2.3-1.3 3-.8.7-2.1 1-3.8 1H7.8zm5-8.3c.6 0 1.2-.1 1.6-.5.4-.3.6-.7.6-1.3 0-1.1-.8-1.7-2.3-1.7H9.3v3.5h3.4zm.5 6c.7 0 1.3-.1 1.7-.4.4-.4.6-.9.6-1.5s-.2-1-.7-1.4c-.4-.3-1-.4-2-.4H9.4v3.8h4z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Italic" title="Italic" type="button" tabindex="-1" class="tox-tbtn" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M16.7 4.7l-.1.9h-.3c-.6 0-1 0-1.4.3-.3.3-.4.6-.5 1.1l-2.1 9.8v.6c0 .5.4.8 1.4.8h.2l-.2.8H8l.2-.8h.2c1.1 0 1.8-.5 2-1.5l2-9.8.1-.5c0-.6-.4-.8-1.4-.8h-.3l.2-.9h5.8z" fill-rule="evenodd"></path></svg></span></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Undo" title="Undo" type="button" tabindex="-1" class="tox-tbtn" disabled="disabled"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M6.4 8H12c3.7 0 6.2 2 6.8 5.1.6 2.7-.4 5.6-2.3 6.8a1 1 0 0 1-1-1.8c1.1-.6 1.8-2.7 1.4-4.6-.5-2.1-2.1-3.5-4.9-3.5H6.4l3.3 3.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 1.4L6.4 8z" fill-rule="nonzero"></path></svg></span></button><button aria-label="Redo" title="Redo" type="button" tabindex="-1" class="tox-tbtn" disabled="disabled"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M17.6 10H12c-2.8 0-4.4 1.4-4.9 3.5-.4 2 .3 4 1.4 4.6a1 1 0 1 1-1 1.8c-2-1.2-2.9-4.1-2.3-6.8.6-3 3-5.1 6.8-5.1h5.6l-3.3-3.3a1 1 0 1 1 1.4-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3z" fill-rule="nonzero"></path></svg></span></button></div></div><div class="tox-anchorbar"></div><div class="tox-sidebar-wrap"><div class="tox-edit-area"><iframe id="note_description_ifr" frameborder="0" allowtransparency="true" title="Rich Text Area. Press ALT-0 for help." class="tox-edit-area__iframe" src="./SimpleNoteApp_files/saved_resource(1).html"></iframe></div><div role="complementary" class="tox-sidebar"><div data-alloy-tabstop="true" tabindex="-1" class="tox-sidebar__slider tox-sidebar--sliding-closed" style="width: 0px;"><div class="tox-sidebar__pane-container"></div></div></div></div></div><div class="tox-statusbar"><div class="tox-statusbar__text-container"><div role="navigation" data-alloy-tabstop="true" class="tox-statusbar__path"></div><span class="tox-statusbar__branding">Powered by <a href="https://www.tiny.cloud/?utm_campaign=editor_referral&amp;utm_medium=poweredby&amp;utm_source=tinymce&amp;utm_content=v5" rel="noopener" target="_blank" tabindex="-1" aria-label="Powered by Tiny">Tiny</a></span></div><div title="Resize" class="tox-statusbar__resize-handle"><svg width="10" height="10"><g fill-rule="nonzero"><path d="M8.1 1.1A.5.5 0 1 1 9 2l-7 7A.5.5 0 1 1 1 8l7-7zM8.1 5.1A.5.5 0 1 1 9 6l-3 3A.5.5 0 1 1 5 8l3-3z"></path></g></svg></div></div></div><div role="application" class="tox tox-tinymce" style="visibility: hidden; height: 200px;"><div class="tox-editor-container"><div role="menubar" data-alloy-tabstop="true" class="tox-menubar"><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">File</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">Edit</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">View</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button><button aria-haspopup="true" role="menuitem" type="button" unselectable="on" tabindex="-1" class="tox-mbtn tox-mbtn--select" aria-expanded="false" style="user-select: none;"><span class="tox-mbtn__select-label">Format</span><div class="tox-mbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div role="group" class="tox-toolbar"><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button title="Formats" aria-label="Formats" aria-haspopup="true" type="button" unselectable="on" tabindex="-1" class="tox-tbtn tox-tbtn--select tox-tbtn--bespoke" aria-expanded="false" style="user-select: none;"><span class="tox-tbtn__select-label">Paragraph</span><div class="tox-tbtn__select-chevron"><svg width="10" height="10"><path d="M8.7 2.2c.3-.3.8-.3 1 0 .4.4.4.9 0 1.2L5.7 7.8c-.3.3-.9.3-1.2 0L.2 3.4a.8.8 0 0 1 0-1.2c.3-.3.8-.3 1.1 0L5 6l3.7-3.8z" fill-rule="nonzero"></path></svg></div></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Bold" title="Bold" type="button" tabindex="-1" class="tox-tbtn" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M7.8 19c-.3 0-.5 0-.6-.2l-.2-.5V5.7c0-.2 0-.4.2-.5l.6-.2h5c1.5 0 2.7.3 3.5 1 .7.6 1.1 1.4 1.1 2.5a3 3 0 0 1-.6 1.9c-.4.6-1 1-1.6 1.2.4.1.9.3 1.3.6s.8.7 1 1.2c.4.4.5 1 .5 1.6 0 1.3-.4 2.3-1.3 3-.8.7-2.1 1-3.8 1H7.8zm5-8.3c.6 0 1.2-.1 1.6-.5.4-.3.6-.7.6-1.3 0-1.1-.8-1.7-2.3-1.7H9.3v3.5h3.4zm.5 6c.7 0 1.3-.1 1.7-.4.4-.4.6-.9.6-1.5s-.2-1-.7-1.4c-.4-.3-1-.4-2-.4H9.4v3.8h4z" fill-rule="evenodd"></path></svg></span></button><button aria-label="Italic" title="Italic" type="button" tabindex="-1" class="tox-tbtn" aria-pressed="false"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M16.7 4.7l-.1.9h-.3c-.6 0-1 0-1.4.3-.3.3-.4.6-.5 1.1l-2.1 9.8v.6c0 .5.4.8 1.4.8h.2l-.2.8H8l.2-.8h.2c1.1 0 1.8-.5 2-1.5l2-9.8.1-.5c0-.6-.4-.8-1.4-.8h-.3l.2-.9h5.8z" fill-rule="evenodd"></path></svg></span></button></div><div title="" role="toolbar" data-alloy-tabstop="true" tabindex="-1" class="tox-toolbar__group"><button aria-label="Undo" title="Undo" type="button" tabindex="-1" class="tox-tbtn" disabled="disabled"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M6.4 8H12c3.7 0 6.2 2 6.8 5.1.6 2.7-.4 5.6-2.3 6.8a1 1 0 0 1-1-1.8c1.1-.6 1.8-2.7 1.4-4.6-.5-2.1-2.1-3.5-4.9-3.5H6.4l3.3 3.3a1 1 0 1 1-1.4 1.4l-5-5a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 1.4L6.4 8z" fill-rule="nonzero"></path></svg></span></button><button aria-label="Redo" title="Redo" type="button" tabindex="-1" class="tox-tbtn" disabled="disabled"><span class="tox-icon tox-tbtn__icon-wrap"><svg width="24" height="24"><path d="M17.6 10H12c-2.8 0-4.4 1.4-4.9 3.5-.4 2 .3 4 1.4 4.6a1 1 0 1 1-1 1.8c-2-1.2-2.9-4.1-2.3-6.8.6-3 3-5.1 6.8-5.1h5.6l-3.3-3.3a1 1 0 1 1 1.4-1.4l5 5a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3z" fill-rule="nonzero"></path></svg></span></button></div></div><div class="tox-anchorbar"></div><div class="tox-sidebar-wrap"><div class="tox-edit-area"><iframe id="note_description_ifr" frameborder="0" allowtransparency="true" title="Rich Text Area. Press ALT-0 for help." class="tox-edit-area__iframe" src="./SimpleNoteApp_files/saved_resource(2).html"></iframe></div><div role="complementary" class="tox-sidebar"><div data-alloy-tabstop="true" tabindex="-1" class="tox-sidebar__slider tox-sidebar--sliding-closed" style="width: 0px;"><div class="tox-sidebar__pane-container"></div></div></div></div></div><div class="tox-statusbar"><div class="tox-statusbar__text-container"><div role="navigation" data-alloy-tabstop="true" class="tox-statusbar__path"></div><span class="tox-statusbar__branding">Powered by <a href="https://www.tiny.cloud/?utm_campaign=editor_referral&amp;utm_medium=poweredby&amp;utm_source=tinymce&amp;utm_content=v5" rel="noopener" target="_blank" tabindex="-1" aria-label="Powered by Tiny">Tiny</a></span></div><div title="Resize" class="tox-statusbar__resize-handle"><svg width="10" height="10"><g fill-rule="nonzero"><path d="M8.1 1.1A.5.5 0 1 1 9 2l-7 7A.5.5 0 1 1 1 8l7-7zM8.1 5.1A.5.5 0 1 1 9 6l-3 3A.5.5 0 1 1 5 8l3-3z"></path></g></svg></div></div></div>
+          </p></div>
+          <div class="field">
+            <p><input placeholder=" Tags with comma seperated" class="form-control note_tag_list" type="text" value="" name="note[tag_list]" id="note_tag_list"></p>
+          </div>
+          <div class="field">
+            <p>Important !!
+              <input type="radio" value="true" name="note[important]" id="note_important_true">
+              <label for="contactmethod_email_Yes">Yes</label>
+              <input type="radio" value="false" checked="checked" name="note[important]" id="note_important_false">
+              <label for="contactmethod_sms_No">No</label>
+            </p>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" name="commit" value="Add" class="btn btn-color" id="addnote" data-disable-with="Add">
+        </div>
+      </div>
+    </div>
+  </div>
+</form><script>
+//<![CDATA[
+TinyMCERails.configuration.default = {
+  selector: "textarea.tinymce",
+  toolbar: ["styleselect | bold italic | undo redo","image | link"]
+};
+TinyMCERails.initialize('default', {
+  
+});
+//]]>
+</script>
+
+  </div>
+  <div>
+    <div class="modal" id="user_profile">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">User Profile</h4>
+        <button type="button" class="close" data-dismiss="modal">×</button>
+      </div>
+      <div class="modal-body">
+
+        <h6>
+          <p>Email :
+            <b>hru@narola.email</b>
+          </p>
+        </h6>
+        <h6>
+          <p>You join us at :
+            <b>February 23, 2019 07:12</b>
+          </p>
+        </h6>
+
+<a data-remote="true" href="http://localhost:3000/users/edit">Update_profile</a>
+
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+  </div>
+
+
+
+<div class="tox tox-silver-sink tox-tinymce-aux" style="position: relative;"></div><div class="modal-backdrop show"></div><div class="tox tox-silver-sink tox-tinymce-aux" style="position: relative;"></div><div class="tox tox-silver-sink tox-tinymce-aux" style="position: relative;"></div></body></html>

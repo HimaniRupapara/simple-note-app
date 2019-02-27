@@ -1,34 +1,37 @@
-<%= form_for(note , remote: true ) do |f| %>
-
+<%= tinymce_assets %>
+<%= form_for(@note, :url => note_path(:id => @note.id), :method => :put,remote: true ) do |f| %>
 <!-- Modal -->
-<div class="modal" id="myupdateNote_<%= note.id %>">
-<div class="modal-dialog">
+<div class="modal" id="myupdateNote">
+  <div class="modal-dialog">
 
-  <!-- Modal content-->
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Edit Note</h4>
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <p>  Title <%= f.text_field :title ,placeholder: " Title" ,class: "form-control "%></p>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Note</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-      <div class="field">
-        <p>
-          <%= f.text_area :description, :class => "tinymce", :rows => 40, :cols => 20 %>
-          <%= tinymce %></p>
-      </div>
-      <div class="field">
-         <p>Tags with comma seperated <%= f.text_field :tag_list ,:value => note.tag_list.map { |t| t }.join(', '), placeholder: " tags with comma seperated" ,class: "form-control "%></p>
-       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= submit_tag "Update" ,class: "btn btn-color",id: "updateNote" %>
+      <div class="modal-body">
+        <div class="field">
+          <p>
+            Title
+            <%= f.text_field :title ,placeholder: " Title" ,class: "form-control"%></p>
+        </div>
+        <div class="field">
+          <p>
+            Description
+            <%= f.text_area :description, :class=>"tinymce" , :rows => 10, :cols => 10 %>
+          </div>
+          <div class="field">
+            <p>Tags with comma seperated
+              <%= f.text_field :tag_list , :value => @note.tag_list.map { |t| t }.join(', '),placeholder: " tags with comma seperated" ,class: "form-control"%></p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <%= submit_tag "Update" ,class: "btn btn-color",id: "updateNote" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
-</div>
 <% end %>
+<%= tinymce %>

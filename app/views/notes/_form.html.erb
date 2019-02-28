@@ -33,3 +33,13 @@
 </div>
 <% end %>
 <%= tinymce %>
+<% if current_user.autosave == false %>
+<!-- 
+<script type="text/javascript">
+  $(document).ready(function () {
+    setInterval(function () {
+      $('#note_form').submit()
+    }, 10000);
+  });
+</script> -->
+<% end %>

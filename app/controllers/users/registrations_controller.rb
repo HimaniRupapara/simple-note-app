@@ -21,28 +21,30 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    account_update_params = devise_parameter_sanitizer.sanitize(:account_update)
+    puts "1......."
+    self.resource = resource_class.to_adapter.get!(send(:"current_#{resource_name}").to_key)
+    puts "2......."
+      prev_unconfirmed_email = resource.unconfirmed_email if resource.respond_to?(:unconfirmed_email)
+      puts "3......."
 
-    # required for settings form to submit when password is left blank
-    if account_update_params[:password].blank?
-      account_update_params.delete("password")
-      account_update_params.delete("password_confirmation")
-    end
-
-    @user = User.find(current_user.id)
-
-    @update = update_resource(@user, account_update_params)
-    if @update
-      # Sign in the user bypassing validation in case their password changed
-      sign_in @user, :bypass => true
-    end
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+      resource_updated = update_resource(resource, account_update_params)
+      yield resource if block_given?
+      if resource_updated
+        puts "4......."
+        set_flash_message_for_update(resource, prev_unconfirmed_email)
+        bypass_sign_in resource, scope: resource_name if sign_in_after_change_password?
+        respond_with resource, location: after_update_path_for(resource)
+      else
+        puts "5......."
+        clean_up_passwords resource
+        set_minimum_password_length
+        respond_with resource
+      end
   end
 
+  def account_update_params
+      devise_parameter_sanitizer.sanitize(:account_update)
+    end
   # DELETE /resource
   # def destroy
   #   super

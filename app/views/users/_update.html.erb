@@ -1,0 +1,15 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, multipart: true },remote: true) do |f| %>
+<div class="field">
+  <%= f.label :email %><br/>
+  <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+</div>
+<div class="field">
+  <p>
+    <%= f.file_field :profile , class: "note_image"%></p>
+</div>
+<p>
+  Autosave !!
+  <%= f.check_box :autosave, {:class => "myclass", :style => "mystyle"}, true, false %>
+</p>
+<%= f.submit "Update" %>
+<% end %>

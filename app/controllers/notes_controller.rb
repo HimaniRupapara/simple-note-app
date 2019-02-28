@@ -40,8 +40,8 @@ class NotesController < ApplicationController
         format.html
         format.js
       else
-
-        format.js {render '_error_messages'}
+        format.html { render :new }
+        format.json { render json: @note.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -82,6 +82,7 @@ class NotesController < ApplicationController
       end
     end
 
+
     def mark_as_important
       if @note.important==true
         @note.important=false
@@ -96,6 +97,7 @@ class NotesController < ApplicationController
     end
 
     private
+
     def get_user_note
       @user=User.find(current_user.id)
       @notes = @user.notes.where('active=true').order('notes.created_at desc')

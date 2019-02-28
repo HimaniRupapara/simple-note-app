@@ -12,7 +12,6 @@ module SimpleNoteApp
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.autoload_paths << Rails.root.join('lib')
-    
     config.assets.paths << Rails.root.join("app", "assets", "fonts")
     # config.eager_load_paths << Rails.root.join('lib')
     # config.autoload_paths += Dir["#{config.root}/lib/**/"]

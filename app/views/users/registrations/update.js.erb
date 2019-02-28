@@ -1,3 +1,4 @@
+$("#dashboard_profile").empty();
+$("#dashboard_profile").append('<%= j render(:partial => "users/dashboard_profile") %>');
 $("#userProfile").empty();
-// $('#profile').load('#profile');
-$("#userProfile").append('<%= j render(:partial => "users/userprofile") %>');
+$("#userProfile").append('<%= j render(:partial => "users/user_profile") %>');

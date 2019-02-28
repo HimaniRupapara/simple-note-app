@@ -8,12 +8,13 @@
     <%= javascript_include_tag 'common', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'user', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag 'pagination', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'user', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'search', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'pagination', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
     <div id="userLayout">
       <div class="wrapper">
 
@@ -23,26 +24,24 @@
         </nav>
         <!-- Page Content -->
         <div style="width: 100%;" id="content">
-
           <nav class="navbar navbar-expand-lg navbar-dark  header_background_color ">
-
             <ul class="navbar-nav ml-auto">
-
               <li class="dropdown">
-                <a class="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <div style="float:right;" id="profile">
-                    <% if current_user %>
-                      <%= image_tag(current_user.profile, :class => "style_image") %>
+
+                <a href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <div id="dashboard_profile" style="padding-right: 15px;">
+                    <%  if current_user.profile %>
+                      <p>
+                        <%= image_tag(current_user.profile, class: 'dashboard_profile_id') %>
+                      </p>
                     <% end %>
                   </div>
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item" data-toggle="modal" data-target="#user_profile" style="cursor:pointer;">Details</a>
-                  <%= link_to 'LogOut',destroy_user_session_path, method: :delete ,class: 'dropdown-item' %>
+                  <%= link_to 'LogOut',destroy_user_session_path, method: :delete ,class: 'dropdown-item'%>
                 </div>
-
               </li>
-
             </ul>
           </nav>
           <div class="container">
@@ -57,12 +56,15 @@
               <% end %>
             </div>
             <button type="button" class="btn btn-sm btn-color" data-toggle="modal" data-target="#newNoteModal">Add Note</button>
+
           </div>
           <br><br>
           <div class="row" style="float:right;">
             <div class="col-sm-12">
+
               <div id="new" style="display:inline-flex;"></div>
             </div>
+
           </div>
           <br><br>
           <div class="row">

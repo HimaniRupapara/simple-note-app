@@ -8,6 +8,7 @@
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
       <div class="modal-body">
+
         <h6>
           <p>Email :
             <b><%= current_user.email %></b>
@@ -18,21 +19,18 @@
             <b><%= current_user.created_at.to_s(:long) %></b>
           </p>
         </h6>
-        <div id="userProfile">
-          <%=  render "users/userprofile" %>
-        </div>
+        <div id="userProfile"></div>
 
         <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put },remote: true) do |f| %>
         <div class="field">
           <p>
-            <%= f.file_field :profile , class: "post_image"%></p>
+            <%= f.file_field :profile , class: "note_image"%></p>
         </div>
         <%= f.submit "Update" %>
-      <% end %>
-
-      <div class="modal-footer"></div>
+        <% end %>
+        <div class="modal-footer"></div>
+      </div>
     </div>
   </div>
-</div>
 
 </div>

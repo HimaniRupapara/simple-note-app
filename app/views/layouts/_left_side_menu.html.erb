@@ -1,3 +1,4 @@
+<%= javascript_include_tag 'user', 'data-turbolinks-track': 'reload' %>
 <div id="note_container">
   <div class="sidebar-header ">
     <h4>SimpleNoteApp</h4>
@@ -18,23 +19,25 @@
               <%= link_to edit_note_path(:id => note.id),remote: true,id: note.id do %>
               <%= icon('fa', 'edit', class: 'editClass') %>
             <% end %>
-
             <%= link_to note_path(:id => note.id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: note.id do %>
             <%= icon('fa', 'trash', class: 'deleteClass') %>
           <% end %>
           <% if note.important == true %>
 
-            <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
-            <%= icon('fa', 'thumbtack', class: 'starClass') %>
-          <% end %>
-        <% else %>
-          <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
-          <%= icon('far', 'star', class: 'starClass') %>
-        <% end %>
-      <% end %>
+             <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+             <%= icon('fa', 'thumbtack', class: 'starClass') %>
+             <% end %>
+
+
+             <% else %>
+               <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+               <%= icon('far', 'star', class: 'starClass') %>
+             <% end %>
+           <% end %>
+
+      </div>
     </div>
   </div>
-</div>
 <% end %>
 <% else %>
 <div style="margin:10px;">No record found
@@ -43,4 +46,4 @@
 </div>
 </div>
 
-<div id="updateModalDiv"></div>
+<div id="updateNoteModalDiv"></div>

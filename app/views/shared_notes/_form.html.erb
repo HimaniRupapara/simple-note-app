@@ -1,32 +1,27 @@
-<%= form_with(model: shared_note, local: true) do |form| %>
-  <% if shared_note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(shared_note.errors.count, "error") %> prohibited this shared_note from being saved:</h2>
-
-      <ul>
-      <% shared_note.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_with(model: [@note, @note.shared_notes.build ], remote: true ) do |f| %>
+<div class="modal" id="newSharedNoteModal">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">ShareNote</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <%= f.hidden_field :shared_by_id, :value => current_user.id %>
+        <div class="field">
+          <p>
+            <%= f.text_field :email,placeholder: " email" ,class: "form-control shared_note_email" %></p>
+        </div>
+        <div class="field">
+          <p><%= f.collection_select :permission_id, Permission.all, :id, :name, prompt: "Permission" %></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <%= submit_tag "Share" ,class: "btn btn-color",id: "shared_note"%>
+      </div>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
   </div>
-
-  <div class="field">
-    <%= form.label :note_id %>
-    <%= form.text_field :note_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :permission_id %>
-    <%= form.text_field :permission_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
 <% end %>

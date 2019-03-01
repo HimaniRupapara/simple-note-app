@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
 
   protected
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:account_update){|u| u.permit(:autosave, :email,:password_confirmation, :password, :current_password)}
-
+    devise_parameter_sanitizer.permit(:account_update){|u| u.permit(:autosave, :profile,:email,:password_confirmation, :password, :current_password)}
   end
 
   private
@@ -17,8 +16,19 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def after_sign_out_path_for(resource_or_scope)
     root_path
+  end
+
+  def check_for_share_note
+    puts "-----------------"
+    @sharenote=SharedNote.find_by(email: params[:user][:email])
+    if @sharenote != nil
+      puts "send"
+      @msg=Note.find(@sharenote.note_id).title + " note shared by " + params[:user][:email]
+      EmailJob.perform_later @msg ,params[:user][:email]
+    else
+      puts "not"
+    end
   end
 end

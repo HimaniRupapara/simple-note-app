@@ -4,7 +4,12 @@ class SharedNotesController < ApplicationController
   # GET /shared_notes
   # GET /shared_notes.json
   def index
-    @shared_notes = SharedNote.all
+    @note=Note.find(params[:note_id])
+    @shared_notes = @note.shared_notes.all
+    respond_to do |format|
+      format.html { redirect_to note_comments_path }
+      format.js
+    end
   end
 
   # GET /shared_notes/1
@@ -14,7 +19,8 @@ class SharedNotesController < ApplicationController
 
   # GET /shared_notes/new
   def new
-    @shared_note = SharedNote.new
+    @note=Note.find(params[:note_id])
+    @shared_note = @note.shared_notes.new
   end
 
   # GET /shared_notes/1/edit
@@ -24,17 +30,23 @@ class SharedNotesController < ApplicationController
   # POST /shared_notes
   # POST /shared_notes.json
   def create
-    @shared_note = SharedNote.new(shared_note_params)
+    @check_email=User.find_by(email:params[:shared_note][:email])
+    if @check_email == nil
+        @msg = "You need to register in SimpleNoteApp through " + "<a href ='http://localhost:3000'>http://localhost:3000</a>"
+    else
+      @note=Note.find(params[:note_id])
+      @shared_note = @note.shared_notes.new(shared_note_params)
+      @msg=Note.find(params[:note_id]).title + " note shared by " + current_user.email
+      respond_to do |format|
+        if @shared_note.save
 
-    respond_to do |format|
-      if @shared_note.save
-        format.html { redirect_to @shared_note, notice: 'Shared note was successfully created.' }
-        format.json { render :show, status: :created, location: @shared_note }
-      else
-        format.html { render :new }
-        format.json { render json: @shared_note.errors, status: :unprocessable_entity }
+          format.html
+          format.js
+        else
+        end
       end
     end
+    EmailJob.perform_later @msg ,params[:shared_note][:email]
   end
 
   # PATCH/PUT /shared_notes/1
@@ -69,6 +81,6 @@ class SharedNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shared_note_params
-      params.require(:shared_note).permit(:email, :note_id, :permission_id)
+      params.require(:shared_note).permit(:email,:shared_by_id, :permission_id)
     end
 end

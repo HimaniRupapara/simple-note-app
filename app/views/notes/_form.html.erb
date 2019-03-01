@@ -1,45 +1,32 @@
 <%= tinymce_assets %>
-<%= form_for(@note, url: note_path(:id => @note.id), :method => :put,remote: true) do |f| %>
+<%= form_for(@note, url: note_path(:id => @note.id), :method => :put,remote: true,id:'note_form') do |f| %>
 
-<!-- Modal -->
-<div class="modal" id="myupdateNote">
-<div class="modal-dialog">
+<div class="field">
+  <p>
+    Title
+    <%= f.text_field :title ,placeholder: " Title" ,class: "form-control "%></p>
+</div>
+<div class="field">
 
-  <!-- Modal content-->
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Edit Note</h4>
-      <button type="button" class="close" data-dismiss="modal">&times;</button>
-    </div>
-    <div class="modal-body">
-      <div class="field">
-        <p>  Title <%= f.text_field :title ,placeholder: " Title" ,class: "form-control "%></p>
-      </div>
-      <div class="field">
-
-        <p>Description <%= f.text_area :description, :class => "tinymce form-control", :rows => 10, :cols => 10 %></p>
-      </div>
-      <div class="field">
-         <p>Tags with comma seperated <%= f.text_field :tag_list ,:value => @note.tag_list.map { |t| t }.join(', '), placeholder: " tags with comma seperated" ,class: "form-control "%></p>
-       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <%= submit_tag "Update" ,class: "btn btn-color",id: "updateNote" %>
-      </div>
-    </div>
-  </div>
+  <p>Description
+    <%= f.text_area :description, :class => "tinymce form-control", :rows => 10, :cols => 10 %></p>
+</div>
+<div class="field">
+  <p>Tags with comma seperated
+    <%= f.text_field :tag_list ,:value => @note.tag_list.map { |t| t }.join(', '), placeholder: " tags with comma seperated" ,class: "form-control "%></p>
 </div>
 
-</div>
+<%= submit_tag "Update" ,class: "btn btn-color",id: "updateNote" %>
+
 <% end %>
 <%= tinymce %>
-<% if current_user.autosave == false %>
-<!-- 
+<% if current_user.autosave == true %>
+
 <script type="text/javascript">
   $(document).ready(function () {
     setInterval(function () {
-      $('#note_form').submit()
-    }, 10000);
+      $('#updateNote').click()
+    }, 5000);
   });
-</script> -->
+</script>
 <% end %>

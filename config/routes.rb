@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+
   resources :shared_notes
-    resources :notes do
-        resources :comments
-      end
+
+  resources :notes do
+      resources :shared_notes
+      resources :comments
+  end
+
   devise_for :users, controllers: {
         sessions: 'users/sessions',
-        registrations: 'users/registrations'
+        registrations:  'users/registrations'
       }
 
 

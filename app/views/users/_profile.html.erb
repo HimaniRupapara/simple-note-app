@@ -19,27 +19,18 @@
           </p>
         </h6>
 
-        <%= link_to 'update',edit_user_registration_path %>
         <div id="userProfile"></div>
 
+        <%= link_to 'UpdateProfile' ,edit_user_registration_path %>
         <div id="updateprofilediv" style="cursor:pointer;">
           UpdateProfile
         </div>
         <div id="showupdateprofilediv">
           <br><br>
-          <%= render 'users/update'%>
+
         </div>
         <div class="modal-footer"></div>
       </div>
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('#showupdateprofilediv').hide();
-    $("#updateprofilediv").on('click', function () {
-      $('#showupdateprofilediv').show();
-    });
-  });
-</script>

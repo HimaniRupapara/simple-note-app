@@ -1,2 +1,3 @@
-$('#updateNoteModalDiv').html('<%= j render(:partial => "notes/form") %>');
-$('#myupdateNote').modal('show');
+$('#comment_container').empty();
+$('#paginationClass').empty();
+$('#comment_container').html('<%= j render(:partial => "notes/form") %>');

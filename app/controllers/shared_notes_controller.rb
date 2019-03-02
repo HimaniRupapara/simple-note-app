@@ -4,10 +4,9 @@ class SharedNotesController < ApplicationController
   # GET /shared_notes
   # GET /shared_notes.json
   def index
-    @note=Note.find(params[:note_id])
-    @shared_notes = @note.shared_notes.all
+    @shared_notes = SharedNote.where(email:current_user.email).all
     respond_to do |format|
-      format.html { redirect_to note_comments_path }
+      format.html
       format.js
     end
   end
@@ -21,6 +20,10 @@ class SharedNotesController < ApplicationController
   def new
     @note=Note.find(params[:note_id])
     @shared_note = @note.shared_notes.new
+    respond_to do |format|
+      format.html { redirect_to note_comments_path }
+      format.js
+    end
   end
 
   # GET /shared_notes/1/edit
@@ -31,15 +34,16 @@ class SharedNotesController < ApplicationController
   # POST /shared_notes.json
   def create
     @check_email=User.find_by(email:params[:shared_note][:email])
+    @note=Note.find(params[:note_id])
+    @shared_note = @note.shared_notes.new(shared_note_params)
     if @check_email == nil
+        @shared_note.save
         @msg = "You need to register in SimpleNoteApp through " + "<a href ='http://localhost:3000'>http://localhost:3000</a>"
     else
-      @note=Note.find(params[:note_id])
-      @shared_note = @note.shared_notes.new(shared_note_params)
+
       @msg=Note.find(params[:note_id]).title + " note shared by " + current_user.email
       respond_to do |format|
         if @shared_note.save
-
           format.html
           format.js
         else

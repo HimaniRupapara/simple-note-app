@@ -1,8 +1,10 @@
 class NotesController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_note, only: [:show, :edit, :update, :destroy,:mark_as_important]
   before_action :get_user_note
   layout 'user'
+
+
 
 
   # GET /notes

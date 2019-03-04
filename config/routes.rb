@@ -1,16 +1,21 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations:  'users/registrations'
+      }
   resources :shared_notes
+
+  resources :users do
+    resources :shared_notes
+  end
 
   resources :notes do
       resources :shared_notes
       resources :comments
   end
 
-  devise_for :users, controllers: {
-        sessions: 'users/sessions',
-        registrations:  'users/registrations'
-      }
+
 
 
   root to: 'home#home'

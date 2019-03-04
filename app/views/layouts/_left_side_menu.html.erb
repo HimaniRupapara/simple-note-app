@@ -32,7 +32,7 @@
         <% end %>
       <% end %>
 
-      <%= link_to note_shared_notes_path(:note_id => note.id),remote: true do %>
+      <%= link_to new_note_shared_note_path(:note_id => note.id),remote: true do %>
       <%= icon('fa', 'share-alt', class: 'starClass') %>
     <% end %>
 

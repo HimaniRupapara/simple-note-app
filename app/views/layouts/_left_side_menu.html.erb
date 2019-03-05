@@ -1,50 +1,84 @@
 <%= javascript_include_tag 'user', 'data-turbolinks-track': 'reload' %>
-<div id="note_container">
+<div id="note_container" style="position: fixed;overflow: hidden;">
   <div class="sidebar-header ">
     <h4>SimpleNoteApp</h4>
   </div>
 
-  <div class="scrollbar">
-    <% if @notes.count>0 %>
-      <% @notes.each do |note| %>
-        <div>
-          <div class="success activeClass">
-            <div style="display: inline-block;line-height:0px">
-              <p>
-                <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true ,:id =>note.id %></strong>
-              </p>
-              <div style="color:#999999;font-size:10px;"><%= (CGI::unescapeHTML note.description).html_safe %></div>
-            </div>
-            <div style="float:right">
-              <%= link_to edit_note_path(:id => note.id),remote: true,id: note.id do %>
-              <%= icon('fa', 'edit', class: 'editClass') %>
+  <div class="container" style="position: relative; overflow: hidden;">
+    <div class="row">
+      <div class="col-xs-12 ">
+        <nav>
+          <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Note</a>
+
+            <a class="nav-item nav-link" id="nav-shared_note-tab" data-toggle="tab" href="#nav-shared_note" role="tab" aria-controls="nav-profile" aria-selected="false">SharedNote</a>
+
+        </div>
+      </nav>
+      <div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+          <div class="scrollbar">
+            <% if @notes.count>0 %>
+              <% @notes.each do |note| %>
+                <div>
+                  <div class="success activeClass">
+                    <div style="display: inline-block;line-height:0px">
+                      <p>
+                        <strong><%= link_to note.title ,note_comments_path(:note_id => note.id), :remote => true ,:id =>note.id %></strong>
+                      </p>
+                      <div style="color:#999999;font-size:10px;"><%= (CGI::unescapeHTML note.description).html_safe %></div>
+                    </div>
+                    <div style="float:right">
+                      <%= link_to edit_note_path(:id => note.id),remote: true,id: note.id do %>
+                      <%= icon('fa', 'edit', class: 'editClass') %>
+                    <% end %>
+                    <%= link_to note_path(:id => note.id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: note.id do %>
+                    <%= icon('fa', 'trash', class: 'deleteClass') %>
+                  <% end %>
+                  <% if note.important == true %>
+                    <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+                    <%= icon('fa', 'thumbtack', class: 'starClass') %>
+                  <% end %>
+                <% else %>
+                  <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+                  <%= icon('far', 'star', class: 'starClass') %>
+                <% end %>
+              <% end %>
+
+              <%= link_to new_note_shared_note_path(:note_id => note.id),remote: true do %>
+              <%= icon('fa', 'share-alt', class: 'starClass') %>
             <% end %>
-            <%= link_to note_path(:id => note.id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: note.id do %>
-            <%= icon('fa', 'trash', class: 'deleteClass') %>
-          <% end %>
-          <% if note.important == true %>
-            <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
-            <%= icon('fa', 'thumbtack', class: 'starClass') %>
-          <% end %>
-        <% else %>
-          <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
-          <%= icon('far', 'star', class: 'starClass') %>
-        <% end %>
-      <% end %>
 
-      <%= link_to new_note_shared_note_path(:note_id => note.id),remote: true do %>
-      <%= icon('fa', 'share-alt', class: 'starClass') %>
+          </div>
+        </div>
+      </div>
     <% end %>
-
+  <% else %>
+    <div style="margin:10px;">No record found
     </div>
-  </div>
+  <% end %>
 </div>
-<% end %>
-<% else %>
-<div style="margin:10px;">No record found
 </div>
-<% end %>
-</div>
+<div class="tab-pane fade" id="nav-shared_note" role="tabpanel" aria-labelledby="nav-shared_note-tab">
+<div id='SharedNoteDiv'></div>
 </div>
 
+</div>
+
+</div>
+</div>
+</div>
+</div>
 <div id="updateNoteModalDiv"></div>
+
+
+<script type="text/javascript">
+var shared_note = document.getElementById("nav-shared_note-tab");
+shared_note.addEventListener("click", function () {
+  Rails.ajax({
+    url: "/shared_notes",
+    type: "GET",
+    dataType: 'json'
+  })
+})
+</script>

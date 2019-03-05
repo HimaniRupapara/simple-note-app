@@ -9,7 +9,7 @@ class SharedNotesController < ApplicationController
       format.html
       format.js
     end
-  end
+    end
 
   # GET /shared_notes/1
   # GET /shared_notes/1.json

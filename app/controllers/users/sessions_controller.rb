@@ -18,7 +18,6 @@ class Users::SessionsController < Devise::SessionsController
     if resource.valid_password?(params[:user][:password])
       if resource.confirmed?
         sign_in :user, resource
-        check_for_share_note
         redirect_to home_dashboard_path
       else
         redirect_to root_path
@@ -36,7 +35,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
 
-  
+
     # DELETE /resource/sign_out
   # def destroy
   #   super

@@ -1,0 +1,2 @@
+$('#errormsg').empty();
+$('#errormsg').append('<% @share_note.errors.full_messages.each do |msg| %><li><%= msg %></li><% end %>')

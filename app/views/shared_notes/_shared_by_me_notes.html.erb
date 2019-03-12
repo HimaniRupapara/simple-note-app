@@ -1,0 +1,50 @@
+<div class="modal" id="shared_by_me_notes_Modal">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">SharedNote</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <% if @shared_notes.count>0 %>
+          <% @shared_notes.each do |notes| %>
+            <div>
+              <div class="success activeClass">
+                <div style="display: inline-block;line-height:0px">
+                  <p>
+                    <strong><%= notes.note.title %></strong>
+                  </p>
+                  <div style="color:#999999;font-size:10px;"><%= notes.email %></div>
+                </div>
+                <div style="display: inline;float: right;">
+                  <%= select_tag :id,options_from_collection_for_select(Permission.all, 'id', 'name', notes.permission_id),:class => "widens" ,:onchange=>"getPermissionID(this.value);",:include_blank => true %>
+                  <button type="button" name="button" class="btn btn-sm btn-color" onclick="changePermission(<%= notes.id %>)">Change</button>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% else %>
+          <div style="margin:10px;">No record found
+          </div>
+        <% end %>
+      </div>
+      <div class="modal-footer"></div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  var selected_permission;
+  function getPermissionID(permission_id) {
+    selected_permission = permission_id;
+  }
+  function changePermission(share_note_id) {
+    Rails.ajax({
+      url: "/shared_notes/" + share_note_id + "/update_permission/" + selected_permission,
+      type: "GET",
+      dataType: 'json'
+    })
+    alert("Changed Permission");
+
+  }
+</script>

@@ -1,5 +1,5 @@
 class SharedNotesController < ApplicationController
-  before_action :set_shared_note, only: [:show, :edit, :update, :destroy]
+  before_action :set_shared_note, only: [:show, :edit, :update, :destroy,:update_permission]
 
   # GET /shared_notes
   # GET /shared_notes.json
@@ -53,27 +53,29 @@ class SharedNotesController < ApplicationController
     EmailJob.perform_later @msg ,params[:shared_note][:email]
   end
 
-  # PATCH/PUT /shared_notes/1
-  # PATCH/PUT /shared_notes/1.json
-  def update
+
+  def request_for_permission
+    @share_id=SharedNote.find(params[:id])
+    @msg="Hi, [#{view_context.link_to('Test','http://localhost:3000'+update_permission_shared_note_path(:id => params[:id]))}]".html_safe
+    @msg = "Request for edit permission of note "+@share_id.note.title+" from  "+@share_id.email + "<br>[#{view_context.link_to('To Approve Click on this link','http://localhost:3000'+update_permission_shared_note_path(:id => params[:id],:permission_id => 2))}]"
+    @note_id = @share_id.note.user.email
+    EmailJob.perform_later @msg ,@note_id
+  end
+
+  def update_permission
+    @shared_note.permission_id=params[:permission_id]
+    @shared_note.save
     respond_to do |format|
-      if @shared_note.update(shared_note_params)
-        format.html { redirect_to @shared_note, notice: 'Shared note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @shared_note }
-      else
-        format.html { render :edit }
-        format.json { render json: @shared_note.errors, status: :unprocessable_entity }
-      end
+      format.html { redirect_to root_path}
+      format.js
     end
   end
 
-  # DELETE /shared_notes/1
-  # DELETE /shared_notes/1.json
-  def destroy
-    @shared_note.destroy
+  def shared_by_me_notes
+    @shared_notes =SharedNote.where(shared_by_id:current_user.id).order('shared_notes.created_at desc')
     respond_to do |format|
-      format.html { redirect_to shared_notes_url, notice: 'Shared note was successfully destroyed.' }
-      format.json { head :no_content }
+      format.html
+      format.js
     end
   end
 
@@ -85,6 +87,6 @@ class SharedNotesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shared_note_params
-      params.require(:shared_note).permit(:email,:shared_by_id, :permission_id)
+      params.require(:shared_note).permit(:email,:shared_by_id,:permission_id)
     end
 end

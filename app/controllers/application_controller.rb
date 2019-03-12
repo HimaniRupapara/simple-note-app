@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update){|u| u.permit(:autosave, :profile,:email,:password_confirmation, :password, :current_password)}
   end
 
+  
   private
   def another_by_method
     if current_user.nil?

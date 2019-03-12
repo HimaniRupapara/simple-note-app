@@ -36,11 +36,11 @@
                     <%= icon('fa', 'trash', class: 'deleteClass') %>
                   <% end %>
                   <% if note.important == true %>
-                    <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+                    <%= link_to mark_as_important_note_path(:id => note.id),remote: true do %>
                     <%= icon('fa', 'thumbtack', class: 'starClass') %>
                   <% end %>
                 <% else %>
-                  <%= link_to mark_as_important_path(:id => note.id),remote: true do %>
+                  <%= link_to mark_as_important_note_path(:id => note.id),remote: true do %>
                   <%= icon('far', 'star', class: 'starClass') %>
                 <% end %>
               <% end %>

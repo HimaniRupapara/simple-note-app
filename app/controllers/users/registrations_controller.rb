@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Users::RegistrationsController < Devise::RegistrationsController
-  aftre_action :check_for_share_note, only: [:create]
+  after_action :check_for_share_note, only: [:create]
 
 
 

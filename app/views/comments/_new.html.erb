@@ -8,6 +8,7 @@
 </div>
 <%= form_with(model: [ @user_note, @user_note.comments.build ], remote: true ) do |f| %>
 <!-- Modal -->
+
 <div class="modal" id="newCommentModal">
   <div class="modal-dialog">
     <!-- Modal content-->
@@ -19,6 +20,7 @@
       <div class="modal-body">
         <%= f.hidden_field :note_id %>
         <%= f.hidden_field :commented_by_id, :value => current_user.id %>
+        <div id="errormsg"></div>
         <div class="field">
           <p><%= f.text_field :body ,placeholder: " Body" ,class: "form-control comment_body"%></p>
         </div>

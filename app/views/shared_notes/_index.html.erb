@@ -7,67 +7,31 @@
             <p>
               <strong><%= link_to notes.note.title ,note_comments_path(:note_id => notes.note_id), :remote => true ,:id =>notes.note_id %></strong>
             </p>
+            <div style="color:#999999;font-size:10px;"><%= notes.user.email %></div>
+
           </div>
           <div style="float:right">
             <% if notes.permission_id == 1 %>
-              <a id="ask_permission">ViewOnly</a>
+              <h6 style="float: right;">viewOnly</h6>
+              <h6 style="color:#1E5F91;font-size:small;"><%= link_to 'REQUEST For EDIT', request_for_permission_shared_note_path(:id =>notes.id),remote: true %></h6>
               <% elsif  notes.permission_id == 2 %>
                 <%= link_to edit_note_path(:id => notes.note_id),remote: true,id: notes.note_id do %>
                 <%= icon('fa', 'edit', class: 'editClass') %>
               <% end %>
-              <%= link_to note_path(:id => notes.note_id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: notes.note_id do %>
-              <%= icon('fa', 'trash', class: 'deleteClass') %>
+            <% else %>
+              <%= link_to edit_note_path(:id => notes.note_id),remote: true,id: notes.note_id do %>
+              <%= icon('fa', 'edit', class: 'editClass') %>
             <% end %>
-          <% else %>
-            <%= link_to edit_note_path(:id => notes.note_id),remote: true,id: notes.note_id do %>
-            <%= icon('fa', 'edit', class: 'editClass') %>
+            <%= link_to new_note_shared_note_path(:note_id => notes.note_id),remote: true do %>
+            <%= icon('fa', 'share-alt', class: 'starClass') %>
           <% end %>
-          <%= link_to note_path(:id => notes.note_id),method: :delete,remote: true,data: {confirm: "Are you sure?"},id: notes.note_id do %>
-          <%= icon('fa', 'trash', class: 'deleteClass') %>
         <% end %>
-
-        <%= link_to new_note_shared_note_path(:note_id => notes.note_id),remote: true do %>
-        <%= icon('fa', 'share-alt', class: 'starClass') %>
-      <% end %>
-    <% end %>
+      </div>
+    </div>
   </div>
-</div>
-</div>
 <% end %>
 <% else %>
 <div style="margin:10px;">No record found
 </div>
 <% end %>
 </div>
-
-<div class="modal" id="permissionAccess">
-<div class="modal-dialog">
-<!-- Modal content-->
-<div class="modal-content">
-<div class="modal-header">
-
-<button type="button" class="close" data-dismiss="modal">&times;</button>
-</div>
-<div class="modal-body">
-You can only
-<b>view</b>
-to this note.To make chnages ask the owner for edit access.<br>
-
-</div>
-<div class="modal-footer">
-<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-<%= link_to 'REQUEST EDIT ACCESS' %>
-</div>
-</div>
-</div>
-</div>
-
-<script type="text/javascript">
-$(document).ready(function () {
-
-$("#ask_permission").click(function () {
-$('#permissionAccess').modal('show');
-});
-
-})
-</script>

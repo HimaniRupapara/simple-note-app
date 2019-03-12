@@ -1,1 +1,5 @@
 $('#SharedNoteDiv').html('<%= j render(:partial => "index") %>');
+
+$("#ask_permission").click(function () {
+$('#permissionAccess').modal('show');
+});

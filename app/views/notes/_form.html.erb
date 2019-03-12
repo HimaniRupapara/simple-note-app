@@ -1,6 +1,6 @@
 <%= tinymce_assets %>
-<%= form_for(@note, url: note_path(:id => @note.id), :method => :put,remote: true,id:'note_form') do |f| %>
-
+<%= form_for(@note, url: note_path(:id => @note.id), :method => :put,remote: true) do |f| %>
+<div id="errormsg"></div>
 <div class="field">
   <p>
     Title

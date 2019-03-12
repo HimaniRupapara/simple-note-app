@@ -4,10 +4,7 @@ class NotesController < ApplicationController
   before_action :get_user_note
   layout 'user'
 
-
-
-
-  # GET /notes
+# GET /notes
   # GET /notes.json
   def index
     @note=@user.notes.new
@@ -42,8 +39,8 @@ class NotesController < ApplicationController
         format.html
         format.js
       else
-        format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html
+        format.js {render :_error_message}
       end
     end
   end
@@ -52,12 +49,12 @@ class NotesController < ApplicationController
   # PATCH/PUT /notes/1.json
   def update
     respond_to do |format|
-      if @note.update_attributes!(note_params)
+      if @note.update_attributes(note_params)
         format.html
         format.js
       else
-        format.html { render :edit }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
+        format.html
+        format.js {render :_error_message}
       end
     end
   end

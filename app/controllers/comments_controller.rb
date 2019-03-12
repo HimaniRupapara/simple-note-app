@@ -40,8 +40,8 @@ class CommentsController < ApplicationController
           format.html
           format.js
       else
-          format.html { redirect_to ro, notice: 'Comment was successfully updated.' }
-          format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html
+        format.js {render :_error_message}
       end
     end
   end
@@ -49,14 +49,16 @@ class CommentsController < ApplicationController
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
   def update
-      if @comment.update_attributes!(comment_params)
-         respond_to do |f|
-         f.html
-         f.js
-       end
-     else
-       render 'edit'
-     end
+
+    respond_to do |format|
+      if @comment.update_attributes(comment_params)
+        format.html
+        format.js
+      else
+        format.html
+        format.js {render :_error_message}
+      end
+    end
 end
 
   # DELETE /comments/1

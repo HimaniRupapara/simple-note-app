@@ -32,21 +32,19 @@ ActiveAdmin.register Note do
     end
   end
 
+  form title: 'A custom title' do |f|
+    inputs 'Details' do
+      input :title
+      input :user, label: 'User', as: :select, collection: User.all.map { |u| [u.email.to_s, u.id] }
+      input :description
+      input :tag_list
 
-  # form title: 'A custom title' do |f|
-  #   inputs 'Details' do
-  #     input :title
-  #     input :user
-  #     input :description
-  #
-  #     li "Created at #{f.object.created_at}" unless f.object.new_record?
-  #   end
-  #   panel 'Markup' do
-  #     "The following can be used in the content below..."
-  #   end
-  #
-  #   para "Press cancel to return to the list without saving."
-  #   actions
-  # end
-
+      li "Created at #{f.object.created_at}" unless f.object.new_record?
+    end
+    panel 'Markup' do
+      'The following can be used in the content below...'
+    end
+    para 'Press cancel to return to the list without saving.'
+    actions
+  end
 end

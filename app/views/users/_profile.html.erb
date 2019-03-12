@@ -22,15 +22,12 @@
         <div id="userProfile"></div>
 
         <%= link_to 'UpdateProfile' ,edit_user_registration_path %>
-        <div id="updateprofilediv" style="cursor:pointer;">
-          UpdateProfile
-        </div>
-        <div id="showupdateprofilediv">
-          <br><br>
-
-        </div>
-        <div class="modal-footer"></div>
+        <br><br>
+        <%= link_to 'Make Payment' ,new_charge_path, remote: true %>
       </div>
+      <div id="paymentDiv"></div>
+      <div class="modal-footer"></div>
     </div>
   </div>
+</div>
 </div>

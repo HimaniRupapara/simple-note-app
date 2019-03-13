@@ -19,7 +19,10 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 gem 'devise'
 
+# for active-admin
 gem 'activeadmin'
+
+# puma
 
 gem 'font-awesome-sass'
 

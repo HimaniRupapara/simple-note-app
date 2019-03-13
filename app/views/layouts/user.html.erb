@@ -35,7 +35,7 @@
                       <p>
                         <%= image_tag(current_user.profile, class: 'dashboard_profile_id') %>
                       </p>
-                      <% else %>
+                    <% else %>
                       <%= image_tag ("/assets/profilepic.jpeg"), class: "dashboard_profile_id" ,style: 'margin:8px;'%>
                     <% end %>
                   </div>
@@ -71,6 +71,7 @@
           <br><br>
           <div class="row">
             <div class="col-sm-12">
+              <div id="notice"><%= notice %></div>
               <%= yield %>
             </div>
           </div>
@@ -86,5 +87,6 @@
   </div>
   <div id='newSharedNoteDiv'></div>
   <div id='shared_by_me_notes'></div>
+
 </body>
 </html>

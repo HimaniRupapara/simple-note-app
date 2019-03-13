@@ -1,3 +1,4 @@
+$('#notice').empty();
 $('#comment_container').empty();
 $("#comment_container").append('<%= j render(@comments) %>');
 $('#new').html('<%= j render(:partial => "new") %>');

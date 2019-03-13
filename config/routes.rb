@@ -18,15 +18,16 @@ Rails.application.routes.draw do
   end
 
   resources :notes do
-
-      member do
+    member do
+        get 'refund'=> 'charges#refund' ,as: :refund
         get :mark_as_important
       end
+      resources :charges 
       resources :shared_notes
       resources :comments
   end
 
-  resources :charges
+
 
 
   root to: 'home#home'

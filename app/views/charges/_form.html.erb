@@ -1,4 +1,4 @@
-<%= form_tag charges_path  do %>
+<%= form_tag note_charges_path  do %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -6,25 +6,13 @@
       </div>
     <% end %>
     <label class="amount">
-        <%= text_field_tag 'amount', nil, id: 'amount' %>
+      Pay $50 for this Note
     </label>
   </article>
-
-
-  <script>
-  $(document).ready(function () {
-    var abc;
-      $('input[name="amount"]').on('change', function () {
-        abc=document.getElementById('amount').value;
-        alert(abc);
-      });
-  });
-  </script>
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="A month's subscription"
+          data-description="Payment for Note"
           data-locale="auto"
-          data-amount=abc
-
-      </script>
+          data-amount= 5000
+</script>
 <% end %>

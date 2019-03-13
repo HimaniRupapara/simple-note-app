@@ -5,4 +5,3 @@
 //= require turbolinks
 //= require tinymce
 //= require bootstrap-sprockets
-//= require_tree

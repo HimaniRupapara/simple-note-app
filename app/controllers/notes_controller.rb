@@ -95,7 +95,7 @@ class NotesController < ApplicationController
       end
     end
 
-    private
+    public
 
     def get_user_note
       @user=User.find(current_user.id)

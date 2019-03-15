@@ -35,4 +35,6 @@ Rails.application.routes.draw do
   get '/home/dashboard' => 'notes#index'
   get '/note/search' => 'notes#searchNote'
   get '/user/shared_by_me_notes' => 'shared_notes#shared_by_me_notes' ,as: :shared_by_me_notes
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener"
 end

@@ -66,6 +66,7 @@ group :production do
   gem 'pg', '>= 0.18', '< 2.0'
   gem "letter_opener"
   gem 'activeadmin'
+  gem 'letter_opener_web'
 
 end
 

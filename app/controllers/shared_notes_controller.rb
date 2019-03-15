@@ -56,7 +56,7 @@ class SharedNotesController < ApplicationController
 
   def request_for_permission
     @share_id=SharedNote.find(params[:id])
-    @msg="Hi, [#{view_context.link_to('Test','http://localhost:3000'+update_permission_shared_note_path(:id => params[:id]))}]".html_safe
+  
     @msg = "Request for edit permission of note "+@share_id.note.title+" from  "+@share_id.email + "<br>[#{view_context.link_to('To Approve Click on this link','http://localhost:3000'+update_permission_shared_note_path(:id => params[:id],:permission_id => 2))}]"
     @note_id = @share_id.note.user.email
     EmailJob.perform_later @msg ,@note_id

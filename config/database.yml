@@ -17,7 +17,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  
+
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -82,5 +82,10 @@ test:
 production:
   <<: *default
   database: SimpleNoteApp_production
-  username: SimpleNoteApp
-  password: <%= ENV['SIMPLENOTEAPP_DATABASE_PASSWORD'] %>
+
+
+  # <<: *default
+  # adapter: postgres
+  # encoding: unicode
+  # database: SimpleNoteApp_production
+  # username: SimpleNoteApp

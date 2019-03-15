@@ -1,3 +1,3 @@
-$('#<%= @comment.id %>').parent().parent().parent().closest('div').fadeOut();
+$('#comments_<%= @comment.id %>').parent().parent().parent().closest('div').fadeOut();
 $('#paginationClass').empty();
 $('#comment_container').after('<%= j render(:partial => "pagination") %>');

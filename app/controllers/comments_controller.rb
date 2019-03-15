@@ -62,7 +62,7 @@ class CommentsController < ApplicationController
 end
 
   # DELETE /comments/1
-  # DELETE /comments/1.jso
+  # DELETE /comments/1.json
   def destroy
     @comment = Comment.destroy(params[:id])
 

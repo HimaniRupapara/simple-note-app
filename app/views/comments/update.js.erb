@@ -1,3 +1,3 @@
 $('#myupdateComment_<%= @comment.id %>').modal('hide');
-$('#<%= @comment.id %>').parent().parent().parent().closest('div').remove();
+$('#comments_<%= @comment.id %>').parent().parent().parent().closest('div').remove();
 $('#comment_container').append('<%= j render(@comment) %>');

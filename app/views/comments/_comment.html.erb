@@ -1,12 +1,12 @@
 <div class="card " style="margin-top: 5px;">
   <div class="cardSelect" style="padding:10px;">
     <div style="display: inline-block;">
-      <h6 class="card-text" style="font-size:15px;"><%= comment.body %></h6>
+      <h6 class="card-text" style="font-size:15px;"><%= comment.body %>aa</h6>
       <h6 class="card-text" style="color:#999999;font-size:10px;"><%= User.find(comment.commented_by_id).email %></h6>
     </div>
     <% if comment.commented_by_id == current_user.id%>
     <div style="float:right;">
-      <button type="button" style="display:contents" data-toggle="modal" data-target="#myupdateComment_<%= comment.id %>" id=<%= comment.id %>>
+      <button type="button" style="display:contents" data-toggle="modal" data-target="#myupdateComment_<%= comment.id %>" id="comments_<%= comment.id %>">
         <%= icon('fa', 'edit', class: 'editClass') %></button>
       <%= link_to note_comment_path(:id => comment.id),method: :delete,remote: true,data: {confirm: "Are you sure?"} do %>
       <%= icon('fa', 'trash', class: 'deleteClass') %>

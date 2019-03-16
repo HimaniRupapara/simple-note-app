@@ -65,17 +65,28 @@ config.assets.compile = true
   # Use a real queuing backend for Active Job (and separate queues per environment)
   config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "SimpleNoteApp_#{Rails.env}"
-  config.action_mailer.delivery_method = :letter_opener_web
+
+
+
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default_options = { from: 'narolarubydeveloper1@gmail.com' }
+  # SMTP settings for gmail
   config.action_mailer.smtp_settings = {
-  :address => "smtp.gmail.com",
-  :port => 587,
-  :domain => '192.168.100.121:80',
-  :user_name => 'narolarubydeveloper1@gmail.com',
-  :password => 'ruby@1234',
-  :authentication => 'plain',
-  :enable_starttls_auto => true
+    address: 'smtp.gmail.com',
+    port: 587,
+    domain: 'gmail.com',
+    user_name: 'narolarubydeveloper1@gmail.com',
+    password: 'ruby@1234',
+    authentication: 'plain',
+    enable_starttls_auto: true
   }
+
+
+
+
+
 
 
   config.action_mailer.perform_caching = false

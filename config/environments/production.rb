@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: 'https://quiet-plains-55573', port: 3000 }
+  config.action_mailer.default_url_options = { host: 'https://quiet-plains-55573.herokuapp.com/', protocol: 'http' }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

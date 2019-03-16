@@ -67,6 +67,8 @@ group :production do
   gem "letter_opener"
   gem 'activeadmin'
   gem 'letter_opener_web'
+  gem "aws-sdk-s3", require: false
+  gem 'mini_magick', '~> 4.8'
 
 end
 
